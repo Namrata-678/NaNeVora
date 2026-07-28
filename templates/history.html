@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Prediction History | NaNeVora
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/history.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ===========================
+     History Banner
+=========================== -->
+
+<section class="history-banner">
+
+    <div class="container text-center">
+
+        <h1>
+
+            Prediction History
+
+        </h1>
+
+        <p>
+
+            View all your previous AI loan assessment results.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ===========================
+     History Section
+=========================== -->
+
+<section class="history-section py-5">
+
+    <div class="container">
+
+        <!-- Search Box -->
+
+        <div class="row mb-4">
+
+            <div class="col-lg-6">
+
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search by Applicant Name...">
+
+            </div>
+
+        </div>
+
+
+        <!-- History Table -->
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead>
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>Date</th>
+
+                        <th>Applicant</th>
+
+                        <th>Loan Amount</th>
+
+                        <th>Status</th>
+
+                        <th>Risk</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for item in history %}
+
+                    <tr>
+
+                        <td data-label="#">
+
+                            {{ forloop.counter }}
+
+                        </td>
+
+                        <td data-label="Date">
+
+                            {{ item.created_at|date:"d M Y" }}
+
+                        </td>
+
+                        <td data-label="Applicant">
+
+                            {{ item.full_name }}
+
+                        </td>
+
+                        <td data-label="Loan Amount">
+
+                            ₹ {{ item.loan_amount }}
+
+                        </td>
+
+                        <td data-label="Status">
+
+                            {% if item.prediction == "Approved" %}
+
+                                <span class="badge bg-success">
+
+                                    Approved
+
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-danger">
+
+                                    Rejected
+
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td data-label="Risk">
+
+                            <span class="badge bg-warning text-dark">
+
+                                {{ item.risk_level }}
+
+                            </span>
+
+                        </td>
+
+                        <td data-label="Action">
+
+                            <a href="#"
+                               class="btn btn-sm btn-outline-primary">
+
+                                View
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="7" class="text-center py-5">
+
+                            <i class="fas fa-folder-open fa-3x mb-3 text-secondary"></i>
+
+                            <h5>
+
+                                No Prediction History Found
+
+                            </h5>
+
+                            <p>
+
+                                Your prediction records will appear here after making predictions.
+
+                            </p>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

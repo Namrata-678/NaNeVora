@@ -1,0 +1,304 @@
+/* ==========================================================
+   NaNeVora
+   Dark Mode CSS
+   Version : 1.0
+==========================================================*/
+
+
+/* ==========================================================
+   BODY
+==========================================================*/
+
+body.dark-mode{
+
+    background:var(--background-color);
+
+    color:var(--text-color);
+
+}
+
+
+/* ==========================================================
+   NAVBAR
+==========================================================*/
+
+body.dark-mode .custom-navbar{
+
+    background:var(--navbar-background);
+
+    border-bottom:1px solid var(--border-color);
+
+}
+
+body.dark-mode .nav-link{
+
+    color:var(--text-color);
+
+}
+
+body.dark-mode .brand-subtitle{
+
+    color:var(--text-light);
+
+}
+
+
+/* ==========================================================
+   CARDS
+==========================================================*/
+
+body.dark-mode .card{
+
+    background:var(--card-background);
+
+    color:var(--text-color);
+
+}
+
+
+/* ==========================================================
+   FOOTER
+==========================================================*/
+
+body.dark-mode .footer{
+
+    background:var(--footer-background);
+
+}
+
+
+/* ==========================================================
+   FORMS
+==========================================================*/
+
+body.dark-mode .form-control,
+
+body.dark-mode .form-select{
+
+    background:#2A2A2A;
+
+    color:#FFFFFF;
+
+    border:1px solid var(--border-color);
+
+}
+
+body.dark-mode .form-control::placeholder{
+
+    color:#BBBBBB;
+
+}
+
+body.dark-mode .form-control:focus,
+
+body.dark-mode .form-select:focus{
+
+    background:#2A2A2A;
+
+    color:#FFFFFF;
+
+}
+
+
+/* ==========================================================
+   BUTTONS
+==========================================================*/
+
+body.dark-mode .btn-outline-primary{
+
+    color:#FFFFFF;
+
+    border-color:var(--primary-color);
+
+}
+
+body.dark-mode .btn-outline-primary:hover{
+
+    color:#FFFFFF;
+
+}
+
+
+/* ==========================================================
+   TABLE
+==========================================================*/
+
+body.dark-mode .table{
+
+    color:#FFFFFF;
+
+    background:var(--card-background);
+
+}
+
+body.dark-mode .table th{
+
+    background:#1E1E1E;
+
+}
+
+body.dark-mode .table td{
+
+    border-color:#333333;
+
+}
+
+
+/* ==========================================================
+   DROPDOWN
+==========================================================*/
+
+body.dark-mode .dropdown-menu{
+
+    background:#1E1E1E;
+
+    border:1px solid #333333;
+
+}
+
+body.dark-mode .dropdown-item{
+
+    color:#FFFFFF;
+
+}
+
+body.dark-mode .dropdown-item:hover{
+
+    background:#2D2D2D;
+
+}
+
+
+/* ==========================================================
+   ALERT
+==========================================================*/
+
+body.dark-mode .alert{
+
+    color:#FFFFFF;
+
+}
+
+
+/* ==========================================================
+   MODAL
+==========================================================*/
+
+body.dark-mode .modal-content{
+
+    background:#1E1E1E;
+
+    color:#FFFFFF;
+
+}
+
+
+/* ==========================================================
+   LINKS
+==========================================================*/
+
+body.dark-mode a{
+
+    color:#A8D1FF;
+
+}
+
+body.dark-mode a:hover{
+
+    color:#FFFFFF;
+
+}
+
+
+/* ==========================================================
+   SCROLLBAR
+==========================================================*/
+
+body.dark-mode::-webkit-scrollbar-track{
+
+    background:#1E1E1E;
+
+}
+
+body.dark-mode::-webkit-scrollbar-thumb{
+
+    background:var(--primary-color);
+
+}
+
+
+/* ==========================================================
+   SMOOTH TRANSITION
+==========================================================*/
+
+body,
+
+.navbar,
+
+.footer,
+
+.card,
+
+.form-control,
+
+.form-select,
+
+.table,
+
+.btn,
+
+.dropdown-menu{
+
+    transition:all .35s ease;
+
+}
+
+/* ==========================================================
+   FAQ - DARK MODE
+========================================================== */
+
+body.dark-mode .accordion-item{
+    background:#1E293B;
+    border:1px solid #334155;
+}
+
+body.dark-mode .accordion-button{
+    background:#1E293B;
+    color:#F8FAFC;
+    border:none;
+    box-shadow:none;
+}
+
+body.dark-mode .accordion-button:not(.collapsed){
+    background:#2563EB;
+    color:#FFFFFF;
+}
+
+body.dark-mode .accordion-button::after{
+    filter:brightness(0) invert(1);
+}
+
+body.dark-mode .accordion-body{
+    background:#0F172A;
+    color:#CBD5E1;
+}
+
+body.dark-mode .accordion-collapse{
+    background:#0F172A;
+}
+
+body.dark-mode .accordion-item:first-of-type,
+body.dark-mode .accordion-item:last-of-type{
+    border-radius:12px;
+}
+
+body.dark-mode .accordion-button:focus{
+    box-shadow:none;
+}
+body.dark-mode .send-message-btn{
+
+    background:linear-gradient(135deg,#3B82F6,#60A5FA);
+
+    color:#fff;
+
+}

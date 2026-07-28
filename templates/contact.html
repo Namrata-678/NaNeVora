@@ -1,0 +1,501 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Contact Us | NaNeVora
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ==========================================================
+                        HERO SECTION
+=========================================================== -->
+
+<section class="contact-hero">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+
+                <span class="hero-tag">
+
+                    <i class="fa-solid fa-headset"></i>
+
+                    24×7 Customer Support
+
+                </span>
+
+                <h1>
+
+                    Contact NaNeVora
+
+                </h1>
+
+                <p>
+
+                    Our support team is always available to help you with
+                    loan prediction, technical issues and account-related
+                    queries.
+
+                </p>
+
+                <div class="hero-buttons">
+
+                    <a href="#contact-form"
+
+                       class="btn btn-primary hero-btn">
+
+                        <i class="fa-solid fa-paper-plane"></i>
+
+                        Send Message
+
+                    </a>
+
+                    <a href="#office"
+
+                       class="btn btn-outline-primary hero-btn">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Visit Office
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 text-center">
+
+                <img src="{% static 'images/contact-support.png' %}"
+
+                     class="hero-image"
+
+                     alt="Support">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================================
+                    QUICK CONTACT CARDS
+=========================================================== -->
+
+<section class="quick-contact">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="quick-card">
+
+                    <div class="quick-icon blue">
+
+                        <i class="fa-solid fa-phone"></i>
+
+                    </div>
+
+                    <h5>Call Us</h5>
+
+                    <p>
+
+                        +91 9021X XXXXX
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="quick-card">
+
+                    <div class="quick-icon green">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                    </div>
+
+                    <h5>Email</h5>
+
+                    <p>
+
+                        support@nanevora.com
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="quick-card">
+
+                    <div class="quick-icon red">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                    </div>
+
+                    <h5>Office</h5>
+
+                    <p>
+
+                        Pune, Maharashtra
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <div class="quick-card">
+
+                    <div class="quick-icon purple">
+
+                        <i class="fab fa-linkedin"></i>
+
+                    </div>
+
+                    <h5>LinkedIn</h5>
+
+                    <p>
+
+                        NaNeVora Team
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================================
+            CONTACT DETAILS + CONTACT FORM
+=========================================================== -->
+
+<section class="contact-main"
+
+         id="contact-form">
+
+    <div class="container">
+
+        <div class="row g-5">
+
+            <!-- LEFT CARD -->
+
+            <div class="col-lg-5">
+
+                <div class="contact-info-card">
+
+                    <span class="section-badge">
+
+                        Contact Details
+
+                    </span>
+
+                    <h2>
+
+                        Get In Touch
+
+                    </h2>
+
+                    <p>
+
+                        We'd love to hear from you.
+                        Contact us using any of the following methods.
+
+                    </p>
+
+                    <div class="info-item">
+
+                        <div class="info-icon">
+
+                            <i class="fa-solid fa-location-dot"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h6>Address</h6>
+
+                            <p>
+
+                                Zeal Polytechnic,
+                                Pune, Maharashtra
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="info-item">
+
+                        <div class="info-icon">
+
+                            <i class="fa-solid fa-envelope"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h6>Email</h6>
+
+                            <p>
+
+                                support@nanevora.com
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="info-item">
+
+                        <div class="info-icon">
+
+                            <i class="fa-solid fa-phone"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h6>Phone</h6>
+
+                            <p>
+
+                                +91 9021X XXXXX
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="info-item">
+<div class="contact-item">
+
+    <i class="fab fa-linkedin"></i>
+
+    <div>
+
+        <h5>LinkedIn</h5>
+
+        <a href="#">
+
+            NaNeVora Team
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- Contact Illustration -->
+<div class="text-center mt-4">
+
+    <img src="{% static 'images/contact.png' %}"
+         alt="Contact Illustration"
+         class="contact-image">
+
+</div>
+
+</div>   <!-- contact-card ends -->
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT CARD -->
+
+            <div class="col-lg-7">
+
+                <div class="contact-form-card">
+
+                    <span class="section-badge">
+
+                        Send Message
+
+                    </span>
+
+                    <h2>
+
+                        We're Here To Help
+
+                    </h2>
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-4">
+
+                                <label>
+
+                                    Full Name
+
+                                </label>
+
+                                <input type="text"
+
+                                       class="form-control"
+
+                                       placeholder="Enter Full Name"
+
+                                       required>
+
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+
+                                <label>
+
+                                    Email
+
+                                </label>
+
+                                <input type="email"
+
+                                       class="form-control"
+
+                                       placeholder="Enter Email"
+
+                                       required>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label>
+
+                                Subject
+
+                            </label>
+
+                            <input type="text"
+
+                                   class="form-control"
+
+                                   placeholder="Subject"
+
+                                   required>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label>
+
+                                Message
+
+                            </label>
+
+                            <textarea
+
+                                rows="6"
+
+                                class="form-control"
+
+                                placeholder="Write your message..."
+
+                                required></textarea>
+
+                        </div>
+
+                        <button class="btn btn-primary submit-btn">
+
+                            <i class="fa-solid fa-paper-plane"></i>
+
+                            Send Message
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================================
+                        GOOGLE MAP
+=========================================================== -->
+
+<section class="office-section"
+
+         id="office">
+
+    <div class="container">
+
+        <div class="office-card">
+
+            <h2>
+
+                Our Office
+
+            </h2>
+
+            <p>
+
+                Google Map integration will be added here.
+
+            </p>
+
+            <div class="map-placeholder">
+
+                <i class="fa-solid fa-map-location-dot"></i>
+
+                <h4>
+
+                    Pune, Maharashtra
+
+                </h4>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/validation.js' %}"></script>
+{% endblock %}

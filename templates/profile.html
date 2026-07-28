@@ -1,0 +1,323 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+My Profile | NaNeVora
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ==========================================
+                PROFILE HEADER
+========================================== -->
+
+<section class="profile-banner">
+
+    <div class="container">
+
+        <div class="text-center">
+
+            <h1>My Profile</h1>
+
+            <p>
+
+                View and manage your NaNeVora account.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ==========================================
+                PROFILE CONTENT
+========================================== -->
+
+<section class="profile-section">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+            <!-- ==========================================
+                        LEFT PROFILE CARD
+            =========================================== -->
+
+            <div class="col-lg-4">
+
+                <div class="profile-card text-center">
+
+                    <div class="profile-avatar">
+
+                        <i class="fa-solid fa-circle-user"></i>
+
+                    </div>
+
+                    <h3>
+
+                        {{ user.get_full_name|default:user.username }}
+
+                    </h3>
+
+                    <p class="email">
+
+                        {{ user.email }}
+
+                    </p>
+
+                    {% if user.is_staff %}
+
+                    <span class="role-badge admin">
+
+                        Administrator
+
+                    </span>
+
+                    {% else %}
+
+                    <span class="role-badge">
+
+                        Standard User
+
+                    </span>
+
+                    {% endif %}
+
+                    <div class="divider"></div>
+
+                    <div class="welcome-box">
+
+                        <h5>
+
+                            Welcome Back 👋
+
+                        </h5>
+
+                        <p>
+
+                            Manage your account information,
+                            monitor prediction history and keep
+                            your profile up to date.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ==========================================
+                     RIGHT INFORMATION CARD
+            =========================================== -->
+
+            <div class="col-lg-8">
+
+                <div class="profile-card">
+
+                    <h2>
+
+                        Personal Information
+
+                    </h2>
+
+                    <div class="row mt-4">
+
+                        <div class="col-md-6">
+
+                            <div class="info-box">
+
+                                <div class="icon">
+
+                                    <i class="fa-solid fa-user"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <small>First Name</small>
+
+                                    <h6>
+
+                                        {{ user.first_name|default:"Not Available" }}
+
+                                    </h6>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="info-box">
+
+                                <div class="icon">
+
+                                    <i class="fa-solid fa-user"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <small>Last Name</small>
+
+                                    <h6>
+
+                                        {{ user.last_name|default:"Not Available" }}
+
+                                    </h6>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="info-box">
+
+                                <div class="icon">
+
+                                    <i class="fa-solid fa-at"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <small>Username</small>
+
+                                    <h6>
+
+                                        {{ user.username }}
+
+                                    </h6>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="info-box">
+
+                                <div class="icon">
+
+                                    <i class="fa-solid fa-envelope"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <small>Email Address</small>
+
+                                    <h6>
+
+                                        {{ user.email }}
+
+                                    </h6>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="info-box">
+
+                                <div class="icon">
+
+                                    <i class="fa-solid fa-calendar-days"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <small>Date Joined</small>
+
+                                    <h6>
+
+                                        {{ user.date_joined|date:"d M Y" }}
+
+                                    </h6>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <div class="info-box">
+
+                                <div class="icon">
+
+                                    <i class="fa-solid fa-clock"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <small>Last Login</small>
+
+                                    <h6>
+
+                                        {% if user.last_login %}
+
+                                            {{ user.last_login|date:"d M Y H:i" }}
+
+                                        {% else %}
+
+                                            Never Logged In
+
+                                        {% endif %}
+
+                                    </h6>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="text-center mt-4">
+
+    <a href="{% url 'dashboard' %}"
+       class="btn btn-primary">
+
+        <i class="fa-solid fa-table-columns me-2"></i>
+
+        Go To Dashboard
+
+    </a>
+
+</div>
+
+    </div>
+
+</section>
+
+{% endblock %}

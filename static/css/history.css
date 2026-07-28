@@ -1,0 +1,244 @@
+/* ==========================================
+   HISTORY PAGE
+========================================== */
+
+/* Banner */
+
+.history-banner{
+    background: linear-gradient(135deg,#0d6efd,#084298);
+    color:#ffffff;
+    padding:90px 0;
+    text-align:center;
+}
+
+.history-banner h1{
+    font-size:3rem;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.history-banner p{
+    font-size:1.15rem;
+    opacity:.9;
+}
+
+
+/* ==========================================
+   HISTORY SECTION
+========================================== */
+
+.history-section{
+    background:#f8f9fa;
+    min-height:70vh;
+}
+
+
+/* ==========================================
+   SEARCH BOX
+========================================== */
+
+.history-section .form-control{
+    border-radius:12px;
+    padding:12px 18px;
+    border:1px solid #ced4da;
+    transition:.3s;
+}
+
+.history-section .form-control:focus{
+    border-color:#0d6efd;
+    box-shadow:0 0 10px rgba(13,110,253,.20);
+}
+
+
+/* ==========================================
+   TABLE
+========================================== */
+
+.table{
+    background:#ffffff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.table thead{
+    background:#0d6efd;
+    color:#ffffff;
+}
+
+.table thead th{
+    padding:18px;
+    border:none;
+    font-weight:600;
+}
+
+.table tbody td{
+    padding:18px;
+    vertical-align:middle;
+}
+
+.table tbody tr{
+    transition:.3s;
+}
+
+.table tbody tr:hover{
+    background:#f1f7ff;
+}
+
+
+/* ==========================================
+   BADGES
+========================================== */
+
+.badge{
+    padding:8px 14px;
+    font-size:14px;
+    border-radius:20px;
+}
+
+
+/* ==========================================
+   BUTTON
+========================================== */
+
+.btn-outline-primary{
+    border-radius:8px;
+    padding:6px 16px;
+    transition:.3s;
+}
+
+.btn-outline-primary:hover{
+    transform:translateY(-2px);
+}
+
+
+/* ==========================================
+   EMPTY STATE
+========================================== */
+
+.table h5{
+    color:#0d6efd;
+    margin-top:10px;
+}
+
+.table p{
+    color:#6c757d;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:992px){
+
+.history-banner{
+    padding:70px 0;
+}
+
+.history-banner h1{
+    font-size:2.4rem;
+}
+
+.table{
+    font-size:15px;
+}
+
+}
+
+@media (max-width:768px){
+
+.history-banner{
+    padding:60px 0;
+}
+
+.history-banner h1{
+    font-size:2rem;
+}
+
+.history-banner p{
+    font-size:1rem;
+}
+
+.table thead{
+    display:none;
+}
+
+.table,
+.table tbody,
+.table tr,
+.table td{
+    display:block;
+    width:100%;
+}
+
+.table tr{
+    background:#ffffff;
+    margin-bottom:20px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    padding:15px;
+}
+
+.table td{
+    text-align:right;
+    padding:10px;
+    position:relative;
+    border:none;
+}
+
+.table td::before{
+    content:attr(data-label);
+    position:absolute;
+    left:10px;
+    font-weight:600;
+    color:#0d6efd;
+}
+
+}
+
+/* ===============================
+   Send Message Button
+================================= */
+
+.send-message-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 24px;
+
+    background:linear-gradient(135deg,#2563EB,#3B82F6);
+
+    color:#fff;
+
+    text-decoration:none;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+    box-shadow:0 10px 25px rgba(37,99,235,.25);
+
+}
+
+.send-message-btn:hover{
+
+    transform:translateY(-3px);
+
+    color:#fff;
+
+    box-shadow:0 15px 35px rgba(37,99,235,.35);
+
+}
+
+.send-message-btn i{
+
+    font-size:16px;
+
+}

@@ -1,0 +1,235 @@
+/* ==========================================================
+   NaNeVora
+   Responsive CSS
+   Version : 1.0
+==========================================================*/
+
+
+/* ==========================================================
+   Large Screens (1400px and below)
+==========================================================*/
+
+@media (max-width:1400px){
+
+    .container{
+        max-width:1200px;
+    }
+
+}
+
+
+/* ==========================================================
+   Laptop (1200px and below)
+==========================================================*/
+
+@media (max-width:1200px){
+
+    h1{
+        font-size:38px;
+    }
+
+    h2{
+        font-size:32px;
+    }
+
+    h3{
+        font-size:28px;
+    }
+
+    section{
+        padding:70px 0;
+    }
+
+}
+
+
+/* ==========================================================
+   Tablet Landscape (992px and below)
+==========================================================*/
+
+@media (max-width:992px){
+
+    h1{
+        font-size:34px;
+    }
+
+    h2{
+        font-size:30px;
+    }
+
+    h3{
+        font-size:26px;
+    }
+
+    section{
+        padding:60px 0;
+    }
+
+    .card{
+        margin-bottom:20px;
+    }
+
+    .footer{
+        text-align:center;
+    }
+
+    .footer-brand{
+        justify-content:center;
+    }
+
+    .footer-contact li{
+        justify-content:center;
+    }
+
+    .social-icons{
+        justify-content:center;
+    }
+
+}
+
+
+/* ==========================================================
+   Tablet Portrait (768px and below)
+==========================================================*/
+
+@media (max-width:768px){
+
+    body{
+        font-size:15px;
+    }
+
+    h1{
+        font-size:30px;
+    }
+
+    h2{
+        font-size:26px;
+    }
+
+    h3{
+        font-size:22px;
+    }
+
+    section{
+        padding:50px 0;
+    }
+
+    .btn{
+        width:100%;
+        margin-bottom:12px;
+    }
+
+    .table-responsive{
+        overflow-x:auto;
+    }
+
+    .card{
+        margin-bottom:20px;
+    }
+
+}
+
+
+/* ==========================================================
+   Mobile Devices (576px and below)
+==========================================================*/
+
+@media (max-width:576px){
+
+    body{
+        font-size:14px;
+    }
+
+    h1{
+        font-size:28px;
+    }
+
+    h2{
+        font-size:24px;
+    }
+
+    h3{
+        font-size:20px;
+    }
+
+    h4{
+        font-size:18px;
+    }
+
+    h5{
+        font-size:17px;
+    }
+
+    p{
+        font-size:14px;
+    }
+
+    section{
+        padding:40px 0;
+    }
+
+    .container{
+        padding-left:18px;
+        padding-right:18px;
+    }
+
+    .card{
+        border-radius:15px;
+    }
+
+    .footer{
+        padding:45px 0 20px;
+    }
+
+    .footer-logo{
+        width:50px;
+        height:50px;
+    }
+
+    .back-to-top{
+        width:45px;
+        height:45px;
+        right:15px;
+        bottom:15px;
+    }
+
+}
+
+
+/* ==========================================================
+   Small Mobile (400px and below)
+==========================================================*/
+
+@media (max-width:400px){
+
+    h1{
+        font-size:24px;
+    }
+
+    h2{
+        font-size:21px;
+    }
+
+    h3{
+        font-size:18px;
+    }
+
+    .brand-text{
+        font-size:20px;
+    }
+
+    .brand-subtitle{
+        font-size:10px;
+    }
+
+    .logo-img{
+        width:45px;
+        height:45px;
+    }
+
+    .footer-logo{
+        width:45px;
+        height:45px;
+    }
+
+}

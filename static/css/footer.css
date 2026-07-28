@@ -1,0 +1,336 @@
+/* ==========================================================
+   NaNeVora
+   Footer CSS
+   Version : 1.0
+==========================================================*/
+
+
+/* ===========================
+   Footer
+=========================== */
+
+.footer{
+
+    background:var(--footer-background);
+
+    color:var(--white);
+
+    padding:60px 0 25px;
+
+    margin-top:80px;
+
+}
+
+
+/* ===========================
+   Logo
+=========================== */
+
+.footer-logo{
+
+    width:60px;
+
+    height:60px;
+
+    object-fit:contain;
+
+}
+
+.footer h4{
+
+    color:var(--white);
+
+    font-weight:700;
+
+}
+
+.footer h5{
+
+    color:var(--white);
+
+    margin-bottom:20px;
+
+    font-size:20px;
+
+}
+
+.footer p{
+
+    color:#CFCFCF;
+
+    line-height:1.8;
+
+}
+
+
+/* ===========================
+   Footer Links
+=========================== */
+
+.footer-links{
+
+    padding:0;
+
+    margin:0;
+
+    list-style:none;
+
+}
+
+.footer-links li{
+
+    margin-bottom:12px;
+
+}
+
+.footer-links a{
+
+    color:#D8D8D8;
+
+    text-decoration:none;
+
+    transition:var(--transition);
+
+}
+
+.footer-links a:hover{
+
+    color:var(--white);
+
+    padding-left:8px;
+
+}
+
+
+/* ===========================
+   Contact
+=========================== */
+
+.footer-contact{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+
+}
+
+.footer-contact li{
+
+    margin-bottom:15px;
+
+    color:#D8D8D8;
+
+    display:flex;
+
+    align-items:flex-start;
+
+}
+
+.footer-contact i{
+
+    width:25px;
+
+    color:#4DA3FF;
+
+    margin-top:4px;
+
+}
+
+
+/* ===========================
+   Social Icons
+=========================== */
+
+.social-icons{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.social-icons a{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-decoration:none;
+
+    background:rgba(255,255,255,.08);
+
+    color:var(--white);
+
+    transition:var(--transition);
+
+    font-size:18px;
+
+}
+
+.social-icons a:hover{
+
+    background:var(--primary-color);
+
+    transform:translateY(-5px);
+
+}
+
+
+/* ===========================
+   Footer Divider
+=========================== */
+
+.footer hr{
+
+    border-color:rgba(255,255,255,.15);
+
+    margin:35px 0;
+
+}
+
+
+/* ===========================
+   Bottom Footer
+=========================== */
+
+.footer .row:last-child p{
+
+    color:#CFCFCF;
+
+    margin:0;
+
+}
+
+.footer .row:last-child a{
+
+    color:#CFCFCF;
+
+    text-decoration:none;
+
+    transition:var(--transition);
+
+}
+
+.footer .row:last-child a:hover{
+
+    color:var(--white);
+
+}
+
+
+/* ===========================
+   Back To Top Button
+=========================== */
+
+.back-to-top{
+
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    width:50px;
+
+    height:50px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--primary-color);
+
+    color:var(--white);
+
+    cursor:pointer;
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:18px;
+
+    box-shadow:var(--shadow-lg);
+
+    transition:var(--transition);
+
+    z-index:999;
+
+}
+
+.back-to-top:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-4px);
+
+}
+
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media(max-width:991px){
+
+    .footer{
+
+        text-align:center;
+
+    }
+
+    .footer-brand{
+
+        justify-content:center;
+
+    }
+
+    .footer-contact li{
+
+        justify-content:center;
+
+    }
+
+    .social-icons{
+
+        justify-content:center;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .footer{
+
+        padding:50px 0 20px;
+
+    }
+
+    .footer h5{
+
+        margin-top:20px;
+
+    }
+
+    .footer-logo{
+
+        width:50px;
+
+        height:50px;
+
+    }
+
+}

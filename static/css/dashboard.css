@@ -1,0 +1,2461 @@
+/* ==========================================================
+   NaNeVora
+   Professional Banking Dashboard
+   Dashboard CSS
+   Part 1
+==========================================================*/
+
+
+/* ==========================================================
+   DASHBOARD SECTION
+==========================================================*/
+
+.dashboard-section{
+
+    background:#F5F8FC;
+
+    min-height:100vh;
+
+    padding:110px 35px 40px 25px;
+
+}
+
+
+/* ==========================================================
+   DASHBOARD LAYOUT
+==========================================================*/
+
+.dashboard-wrapper{
+
+    display:block;
+
+    grid-template-columns:290px 1fr;
+
+    gap:35px;
+
+    align-items:start;
+
+    padding-right:20px;
+
+}
+
+
+/* ==========================================================
+   SIDEBAR
+==========================================================*/
+
+.dashboard-sidebar{
+
+    background:#FFFFFF;
+
+    border-radius:28px;
+
+    border:1px solid #E4EAF4;
+
+    box-shadow:0 15px 40px rgba(15,23,42,.08);
+
+    overflow-y:auto;
+
+    position:fixed;
+
+    left:20px;
+
+    top:90px;
+
+    width:260px;
+
+    height:calc(100vh - 110px);
+
+    scrollbar-width:none;
+
+    -ms-overflow-style:none;
+
+}
+
+.dashboard-sidebar::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+
+/* ==========================================================
+   SIDEBAR HEADER
+==========================================================*/
+
+.sidebar-header{
+
+    background:linear-gradient(135deg,#2563EB,#1D4ED8);
+
+    text-align:center;
+
+    padding:35px 20px;
+
+    color:#FFFFFF;
+
+}
+
+.sidebar-header img{
+
+    width:72px;
+
+    height:72px;
+
+    object-fit:contain;
+
+    background:#FFFFFF;
+
+    padding:10px;
+
+    border-radius:18px;
+
+    margin-bottom:18px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.18);
+
+}
+
+.sidebar-header h3{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    margin-bottom:6px;
+
+}
+
+.sidebar-header p{
+
+    font-size:14px;
+
+    opacity:.9;
+
+    margin:0;
+
+}
+
+
+/* ==========================================================
+   SIDEBAR MENU
+==========================================================*/
+
+.sidebar-menu{
+
+    padding:22px;
+
+}
+
+.sidebar-menu h6{
+
+    color:#94A3B8;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-size:12px;
+
+    margin:18px 10px;
+
+}
+
+
+/* ==========================================================
+   MENU LINKS
+==========================================================*/
+
+.sidebar-menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    text-decoration:none;
+
+    color:#334155;
+
+    padding:14px 16px;
+
+    border-radius:16px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    margin-bottom:10px;
+
+    transition:.35s;
+
+}
+
+.sidebar-menu a i{
+
+    width:42px;
+
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:12px;
+
+    background:#EEF4FF;
+
+    color:#2563EB;
+
+    font-size:18px;
+
+    transition:.35s;
+
+}
+
+.sidebar-menu a:hover{
+
+    background:linear-gradient(135deg,#2563EB,#3B82F6);
+
+    color:#FFFFFF;
+
+    transform:translateX(5px);
+
+    box-shadow:0 12px 25px rgba(37,99,235,.20);
+
+}
+
+.sidebar-menu a:hover i{
+
+    background:#FFFFFF;
+
+    color:#2563EB;
+
+}
+
+.sidebar-menu .active{
+
+    background:linear-gradient(135deg,#2563EB,#3B82F6);
+
+    color:#FFFFFF;
+
+}
+
+.sidebar-menu .active i{
+
+    background:#FFFFFF;
+
+    color:#2563EB;
+
+}
+
+
+/* ==========================================================
+   LOGOUT BUTTON
+==========================================================*/
+
+.logout{
+
+    margin-top:18px;
+
+    background:#FEF2F2;
+
+    color:#DC2626 !important;
+
+}
+
+.logout i{
+
+    background:#FEE2E2 !important;
+
+    color:#DC2626 !important;
+
+}
+
+.logout:hover{
+
+    background:linear-gradient(135deg,#DC2626,#EF4444) !important;
+
+    color:#FFFFFF !important;
+
+}
+
+.logout:hover i{
+
+    background:#FFFFFF !important;
+
+    color:#DC2626 !important;
+
+}
+
+
+/* ==========================================================
+   MAIN CONTENT
+==========================================================*/
+
+.dashboard-content{
+
+    margin-left:300px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:40px;
+
+        padding-right:25px;
+
+    box-sizing:border-box;
+
+}
+/* ==========================================================
+   PART 2 : WELCOME CARD
+==========================================================*/
+
+
+/* ==========================================================
+   WELCOME CARD
+==========================================================*/
+
+.welcome-card{
+
+
+    background:#FFFFFF;
+
+    border:1px solid #E4EAF4;
+
+    border-radius:28px;
+
+    padding:40px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:40px;
+
+    width:100%;
+
+    box-shadow:0 15px 40px rgba(15,23,42,.08);
+
+    overflow:hidden;
+
+    position:relative;
+
+    margin-bottom:15px;
+
+}
+
+
+/* Decorative Background */
+
+.welcome-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+
+    height:300px;
+
+    background:rgba(37,99,235,.05);
+
+    border-radius:50%;
+
+    right:-120px;
+
+    top:-120px;
+
+}
+
+.welcome-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    background:rgba(59,130,246,.06);
+
+    border-radius:50%;
+
+    left:-80px;
+
+    bottom:-80px;
+
+}
+
+
+/* ==========================================================
+   LEFT CONTENT
+==========================================================*/
+
+.welcome-left{
+
+    flex:1;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.welcome-tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:8px 18px;
+
+    border-radius:50px;
+
+    background:#EEF4FF;
+
+    color:#2563EB;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    margin-bottom:18px;
+
+}
+
+.welcome-left h2{
+
+    font-size:40px;
+
+    font-weight:700;
+
+    color:#0F172A;
+
+    margin-bottom:18px;
+
+    line-height:1.2;
+
+}
+
+.welcome-left h2 span{
+
+    color:#2563EB;
+
+}
+
+.welcome-left p{
+
+    font-size:17px;
+
+    color:#64748B;
+
+    line-height:32px;
+
+    max-width:620px;
+
+    margin-bottom:30px;
+
+}
+
+
+/* ==========================================================
+   BUTTONS
+==========================================================*/
+
+.welcome-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+}
+
+.welcome-actions .btn{
+
+    padding:14px 28px;
+
+    border-radius:14px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.welcome-actions .btn-primary{
+
+    background:linear-gradient(135deg,#2563EB,#3B82F6);
+
+    border:none;
+
+    box-shadow:0 10px 25px rgba(37,99,235,.20);
+
+}
+
+.welcome-actions .btn-primary:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 18px 35px rgba(37,99,235,.30);
+
+}
+
+
+/* ==========================================================
+   DATE
+==========================================================*/
+
+.current-date{
+
+    margin-top:25px;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    background:#F8FAFC;
+
+    border:1px solid #E2E8F0;
+
+    padding:12px 18px;
+
+    border-radius:14px;
+
+    color:#475569;
+
+    font-weight:600;
+
+}
+
+.current-date i{
+
+    color:#2563EB;
+
+}
+
+
+/* ==========================================================
+   RIGHT IMAGE
+==========================================================*/
+
+.welcome-right{
+
+    flex:0 0 340px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.dashboard-ai{
+
+    width:300px;
+
+    max-width:100%;
+
+    transition:.4s;
+
+    filter:drop-shadow(0 20px 30px rgba(37,99,235,.18));
+
+}
+
+.dashboard-ai:hover{
+
+    transform:translateY(-8px) scale(1.03);
+
+}
+
+
+/* ==========================================================
+   DIVIDER
+==========================================================*/
+
+.section-divider{
+
+    width:100%;
+
+    height:1px;
+
+    background:#E5E7EB;
+
+    margin:5px 0;
+
+}
+/* ==========================================================
+   PART 3 : PREMIUM STATISTICS CARDS
+==========================================================*/
+
+
+/* ==========================================================
+   STATS GRID
+==========================================================*/
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:28px;
+
+    margin-bottom:18px;
+
+}
+
+
+/* ==========================================================
+   PREMIUM CARD
+==========================================================*/
+
+.premium-card{
+
+    position:relative;
+
+    background:#FFFFFF;
+
+    border:1px solid #E4EAF4;
+
+    border-radius:24px;
+
+    padding:28px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+    overflow:hidden;
+
+    transition:.35s;
+
+    box-shadow:0 12px 35px rgba(15,23,42,.08);
+
+}
+
+.premium-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#2563EB;
+
+    box-shadow:0 25px 50px rgba(37,99,235,.18);
+
+}
+
+
+/* ==========================================================
+   TOP LINE
+==========================================================*/
+
+.premium-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:100%;
+
+    height:5px;
+
+    background:linear-gradient(90deg,#2563EB,#60A5FA);
+
+}
+
+
+/* ==========================================================
+   LIGHT BACKGROUND CIRCLE
+==========================================================*/
+
+.premium-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:140px;
+
+    height:140px;
+
+    border-radius:50%;
+
+    background:rgba(37,99,235,.04);
+
+    right:-60px;
+
+    top:-60px;
+
+}
+
+
+/* ==========================================================
+   ICON BOX
+==========================================================*/
+
+.card-icon{
+
+    width:72px;
+
+    height:72px;
+
+    min-width:72px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:20px;
+
+    color:#FFFFFF;
+
+    font-size:28px;
+
+    transition:.35s;
+
+    box-shadow:0 12px 25px rgba(0,0,0,.12);
+
+}
+
+.premium-card:hover .card-icon{
+
+    transform:rotate(-10deg) scale(1.08);
+
+}
+
+
+/* ==========================================================
+   ICON COLORS
+==========================================================*/
+
+.blue{
+
+    background:linear-gradient(135deg,#2563EB,#3B82F6);
+
+}
+
+.green{
+
+    background:linear-gradient(135deg,#10B981,#34D399);
+
+}
+
+.red{
+
+    background:linear-gradient(135deg,#EF4444,#F87171);
+
+}
+
+.purple{
+
+    background:linear-gradient(135deg,#7C3AED,#8B5CF6);
+
+}
+
+
+/* ==========================================================
+   CARD CONTENT
+==========================================================*/
+
+.card-content{
+
+    flex:1;
+
+}
+
+.card-content h3{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    color:#0F172A;
+
+    margin-bottom:8px;
+
+    transition:.35s;
+
+}
+
+.card-content p{
+
+    color:#64748B;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    margin:0;
+
+}
+
+.premium-card:hover h3{
+
+    color:#2563EB;
+
+}
+
+
+/* ==========================================================
+   BORDER EFFECT
+==========================================================*/
+
+.premium-card:hover{
+
+    border-left:6px solid #2563EB;
+
+}
+
+
+/* ==========================================================
+   SMALL BADGE
+==========================================================*/
+
+.card-badge{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    background:#EEF4FF;
+
+    color:#2563EB;
+
+    padding:5px 12px;
+
+    border-radius:30px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+/* ==========================================================
+   PART 4 : PREDICTION TABLE
+==========================================================*/
+
+
+/* ==========================================================
+   TABLE CARD
+==========================================================*/
+
+.prediction-table-card{
+
+    background:#FFFFFF;
+
+    border:1px solid #E4EAF4;
+
+    border-radius:24px;
+
+    padding:28px;
+
+    box-shadow:0 15px 35px rgba(15,23,42,.08);
+
+    overflow:hidden;
+
+    margin-top:15px;
+
+}
+
+
+/* ==========================================================
+   TABLE HEADER
+==========================================================*/
+
+.table-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:25px;
+
+    padding-bottom:18px;
+
+    border-bottom:1px solid #E5E7EB;
+
+}
+
+.table-header h4{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#1E293B;
+
+    margin-bottom:6px;
+
+}
+
+.table-header small{
+
+    color:#64748B;
+
+    font-size:14px;
+
+}
+
+.table-header i{
+
+    color:#2563EB;
+
+}
+
+
+/* ==========================================================
+   TABLE
+==========================================================*/
+
+.prediction-table-card table{
+
+    width:100%;
+
+    border-collapse:separate;
+
+    border-spacing:0 14px;
+
+}
+
+.prediction-table-card thead th{
+
+    background:linear-gradient(135deg,#2563EB,#3B82F6);
+
+    color:#FFFFFF;
+
+    padding:16px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    border:none;
+
+}
+
+.prediction-table-card thead th:first-child{
+
+    border-radius:14px 0 0 14px;
+
+}
+
+.prediction-table-card thead th:last-child{
+
+    border-radius:0 14px 14px 0;
+
+}
+
+
+/* ==========================================================
+   TABLE ROWS
+==========================================================*/
+
+.prediction-table-card tbody tr{
+
+    background:#FFFFFF;
+
+    transition:.35s;
+
+    box-shadow:0 8px 20px rgba(15,23,42,.05);
+
+}
+
+.prediction-table-card tbody tr:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 15px 30px rgba(37,99,235,.12);
+
+}
+
+.prediction-table-card tbody td{
+
+    padding:18px;
+
+    vertical-align:middle;
+
+    border:none;
+
+    color:#334155;
+
+    font-size:15px;
+
+}
+
+.prediction-table-card tbody td:first-child{
+
+    border-radius:14px 0 0 14px;
+
+}
+
+.prediction-table-card tbody td:last-child{
+
+    border-radius:0 14px 14px 0;
+
+}
+
+
+/* ==========================================================
+   APPLICANT INFO
+==========================================================*/
+
+.applicant-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.avatar{
+
+    width:44px;
+
+    height:44px;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#2563EB,#60A5FA);
+
+    color:#FFFFFF;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-weight:700;
+
+    font-size:16px;
+
+    box-shadow:0 8px 18px rgba(37,99,235,.20);
+
+}
+
+
+/* ==========================================================
+   STATUS BADGES
+==========================================================*/
+
+.status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:9px 18px;
+
+    border-radius:30px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.status.success{
+
+    background:#DCFCE7;
+
+    color:#15803D;
+
+}
+
+.status.success i{
+
+    color:#22C55E;
+
+}
+
+.status.danger{
+
+    background:#FEE2E2;
+
+    color:#B91C1C;
+
+}
+
+.status.danger i{
+
+    color:#EF4444;
+
+}
+
+
+/* ==========================================================
+   NO DATA
+==========================================================*/
+
+.no-data{
+
+    text-align:center;
+
+    padding:70px 20px;
+
+}
+
+.no-data img{
+
+    width:180px;
+
+    margin-bottom:25px;
+
+}
+
+.no-data h5{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#1E293B;
+
+    margin-bottom:10px;
+
+}
+
+.no-data p{
+
+    color:#64748B;
+
+    margin-bottom:25px;
+
+    font-size:15px;
+
+}
+
+.no-data .btn{
+
+    background:linear-gradient(135deg,#2563EB,#3B82F6);
+
+    border:none;
+
+    border-radius:12px;
+
+    padding:12px 26px;
+
+    font-weight:600;
+
+}
+
+.no-data .btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 30px rgba(37,99,235,.20);
+
+}
+
+
+/* ==========================================================
+   TABLE SCROLLBAR
+==========================================================*/
+
+.table-responsive::-webkit-scrollbar{
+
+    height:8px;
+
+}
+
+.table-responsive::-webkit-scrollbar-track{
+
+    background:#E5E7EB;
+
+    border-radius:20px;
+
+}
+
+.table-responsive::-webkit-scrollbar-thumb{
+
+    background:#2563EB;
+
+    border-radius:20px;
+
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover{
+
+    background:#1D4ED8;
+
+}
+/* ==========================================================
+   PART 5 : BUTTONS, ANIMATIONS & PREMIUM EFFECTS
+==========================================================*/
+
+
+/* ==========================================================
+   COMMON BUTTONS
+==========================================================*/
+
+.btn-primary{
+
+    background:linear-gradient(135deg,#2563EB,#3B82F6);
+
+    border:none;
+
+    border-radius:14px;
+
+    padding:12px 26px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+    box-shadow:0 10px 25px rgba(37,99,235,.20);
+
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 18px 35px rgba(37,99,235,.30);
+
+}
+
+
+/* ==========================================================
+   OUTLINE BUTTON
+==========================================================*/
+
+.btn-outline-primary{
+
+    border:2px solid #2563EB;
+
+    color:#2563EB;
+
+    background:#FFFFFF;
+
+    border-radius:14px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.btn-outline-primary:hover{
+
+    background:#2563EB;
+
+    color:#FFFFFF;
+
+}
+
+
+/* ==========================================================
+   CARD HOVER EFFECT
+==========================================================*/
+
+.welcome-card,
+.premium-card,
+.prediction-table-card{
+
+    transition:.35s;
+
+}
+
+.welcome-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 25px 45px rgba(37,99,235,.10);
+
+}
+
+.prediction-table-card:hover{
+
+    box-shadow:0 22px 45px rgba(15,23,42,.10);
+
+}
+
+
+/* ==========================================================
+   SECTION TITLE
+==========================================================*/
+
+.section-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-bottom:25px;
+
+}
+
+.section-title i{
+
+    width:48px;
+
+    height:48px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:#EEF4FF;
+
+    color:#2563EB;
+
+    font-size:20px;
+
+}
+
+.section-title h3{
+
+    margin:0;
+
+    color:#1E293B;
+
+    font-weight:700;
+
+}
+
+.section-title p{
+
+    margin:2px 0 0;
+
+    color:#64748B;
+
+    font-size:14px;
+
+}
+
+
+/* ==========================================================
+   GLASS EFFECT
+==========================================================*/
+
+.glass{
+
+    backdrop-filter:blur(18px);
+
+    background:rgba(255,255,255,.75);
+
+    border:1px solid rgba(255,255,255,.30);
+
+}
+
+
+/* ==========================================================
+   DIVIDER
+==========================================================*/
+
+.divider{
+
+    width:100%;
+
+    height:1px;
+
+    background:#E5E7EB;
+
+    margin:30px 0;
+
+}
+
+
+/* ==========================================================
+   CUSTOM SCROLLBAR
+==========================================================*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+    height:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#EEF2F7;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#2563EB;
+
+    border-radius:30px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#1D4ED8;
+
+}
+
+
+/* ==========================================================
+   FADE ANIMATION
+==========================================================*/
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.dashboard-content>*{
+
+    animation:fadeUp .6s ease;
+
+}
+
+
+/* ==========================================================
+   FLOATING ANIMATION
+==========================================================*/
+
+@keyframes floating{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.dashboard-ai{
+
+    animation:floating 5s ease-in-out infinite;
+
+}
+
+
+/* ==========================================================
+   ICON ROTATION
+==========================================================*/
+
+.sidebar-menu a:hover i{
+
+    transform:rotate(-10deg) scale(1.08);
+
+}
+
+
+/* ==========================================================
+   IMAGE SHADOW
+==========================================================*/
+
+.dashboard-ai{
+
+    filter:drop-shadow(0 20px 35px rgba(37,99,235,.20));
+
+}
+
+
+/* ==========================================================
+   BORDER ACCENT
+==========================================================*/
+
+.welcome-card{
+
+    border-left:6px solid #2563EB;
+
+}
+
+.premium-card{
+
+    border-left:5px solid transparent;
+
+}
+
+.premium-card:hover{
+
+    border-left:5px solid #2563EB;
+
+}
+
+.prediction-table-card{
+
+    border-top:5px solid #2563EB;
+
+}
+/* ==========================================================
+   PART 6 : PROFESSIONAL DARK MODE
+==========================================================*/
+
+body.dark-mode{
+
+    background:#0F172A;
+
+    color:#E2E8F0;
+
+}
+
+
+/* ==========================================================
+   DASHBOARD BACKGROUND
+==========================================================*/
+
+body.dark-mode .dashboard-section{
+
+    background:linear-gradient(
+        180deg,
+        #0F172A 0%,
+        #111827 45%,
+        #1E293B 100%
+    );
+
+}
+
+
+/* ==========================================================
+   SIDEBAR
+==========================================================*/
+
+body.dark-mode .dashboard-sidebar{
+
+    background:#1E293B;
+
+    border:1px solid #334155;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.35);
+
+}
+
+body.dark-mode .sidebar-header{
+
+    background:linear-gradient(
+        135deg,
+        #1D4ED8,
+        #2563EB
+    );
+
+}
+
+body.dark-mode .sidebar-menu h6{
+
+    color:#94A3B8;
+
+}
+
+body.dark-mode .sidebar-menu a{
+
+    color:#CBD5E1;
+
+}
+
+body.dark-mode .sidebar-menu a i{
+
+    background:#334155;
+
+    color:#60A5FA;
+
+}
+
+body.dark-mode .sidebar-menu a:hover{
+
+    background:linear-gradient(
+        135deg,
+        #2563EB,
+        #3B82F6
+    );
+
+    color:#FFFFFF;
+
+}
+
+body.dark-mode .sidebar-menu a:hover i{
+
+    background:#FFFFFF;
+
+    color:#2563EB;
+
+}
+
+body.dark-mode .sidebar-menu .active{
+
+    background:linear-gradient(
+        135deg,
+        #2563EB,
+        #3B82F6
+    );
+
+    color:#FFFFFF;
+
+}
+
+body.dark-mode .sidebar-menu .active i{
+
+    background:#FFFFFF;
+
+    color:#2563EB;
+
+}
+
+
+/* ==========================================================
+   WELCOME CARD
+==========================================================*/
+
+body.dark-mode .welcome-card{
+
+    background:#1E293B;
+
+    border:1px solid #334155;
+
+}
+
+body.dark-mode .welcome-card::before{
+
+    background:rgba(96,165,250,.08);
+
+}
+
+body.dark-mode .welcome-card::after{
+
+    background:rgba(59,130,246,.06);
+
+}
+
+body.dark-mode .welcome-left h2{
+
+    color:#F8FAFC;
+
+}
+
+body.dark-mode .welcome-left p{
+
+    color:#CBD5E1;
+
+}
+
+body.dark-mode .welcome-tag{
+
+    background:#334155;
+
+    color:#60A5FA;
+
+}
+
+body.dark-mode .current-date{
+
+    background:#334155;
+
+    border-color:#475569;
+
+    color:#E2E8F0;
+
+}
+
+
+/* ==========================================================
+   STATISTICS CARDS
+==========================================================*/
+
+body.dark-mode .premium-card{
+
+    background:#1E293B;
+
+    border:1px solid #334155;
+
+}
+
+body.dark-mode .premium-card::after{
+
+    background:rgba(96,165,250,.05);
+
+}
+
+body.dark-mode .card-content h3{
+
+    color:#F8FAFC;
+
+}
+
+body.dark-mode .card-content p{
+
+    color:#CBD5E1;
+
+}
+
+
+/* ==========================================================
+   TABLE
+==========================================================*/
+
+body.dark-mode .prediction-table-card{
+
+    background:#1E293B;
+
+    border:1px solid #334155;
+
+}
+
+body.dark-mode .table-header{
+
+    border-bottom:1px solid #334155;
+
+}
+
+body.dark-mode .table-header h4{
+
+    color:#F8FAFC;
+
+}
+
+body.dark-mode .table-header small{
+
+    color:#CBD5E1;
+
+}
+
+body.dark-mode .prediction-table-card tbody tr{
+
+    background:#273549;
+
+}
+
+body.dark-mode .prediction-table-card tbody td{
+
+    color:#E2E8F0;
+
+}
+
+
+/* ==========================================================
+   NO DATA
+==========================================================*/
+
+body.dark-mode .no-data h5{
+
+    color:#F8FAFC;
+
+}
+
+body.dark-mode .no-data p{
+
+    color:#CBD5E1;
+
+}
+
+
+/* ==========================================================
+   DIVIDER
+==========================================================*/
+
+body.dark-mode .divider{
+
+    background:#334155;
+
+}
+
+
+/* ==========================================================
+   SECTION TITLE
+==========================================================*/
+
+body.dark-mode .section-title h3{
+
+    color:#F8FAFC;
+
+}
+
+body.dark-mode .section-title p{
+
+    color:#CBD5E1;
+
+}
+
+body.dark-mode .section-title i{
+
+    background:#334155;
+
+    color:#60A5FA;
+
+}
+
+
+/* ==========================================================
+   BUTTONS
+==========================================================*/
+
+body.dark-mode .btn-outline-primary{
+
+    background:#1E293B;
+
+    border-color:#60A5FA;
+
+    color:#60A5FA;
+
+}
+
+body.dark-mode .btn-outline-primary:hover{
+
+    background:#2563EB;
+
+    color:#FFFFFF;
+
+}
+
+
+/* ==========================================================
+   SCROLLBAR
+==========================================================*/
+
+body.dark-mode ::-webkit-scrollbar-track{
+
+    background:#1E293B;
+
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb{
+
+    background:#475569;
+
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover{
+
+    background:#60A5FA;
+
+}
+
+
+/* ==========================================================
+   LOGOUT BUTTON
+==========================================================*/
+
+body.dark-mode .logout{
+
+    background:#3B1D1D;
+
+    color:#FCA5A5 !important;
+
+}
+
+body.dark-mode .logout i{
+
+    background:#7F1D1D !important;
+
+    color:#FCA5A5 !important;
+
+}
+
+
+/* ==========================================================
+   PART 7 : RESPONSIVE DESIGN
+==========================================================*/
+
+
+/* ==========================================================
+   LARGE LAPTOP
+==========================================================*/
+
+@media (max-width:1400px){
+
+    .dashboard-wrapper{
+
+        grid-template-columns:270px 1fr;
+
+    }
+
+}
+
+
+/* ==========================================================
+   LAPTOP
+==========================================================*/
+
+@media (max-width:1200px){
+
+    .dashboard-wrapper{
+
+        grid-template-columns:260px 1fr;
+
+        gap:25px;
+
+    }
+
+    .stats-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .welcome-card{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .welcome-left{
+
+        max-width:100%;
+
+    }
+
+    .welcome-right{
+
+        margin-top:20px;
+
+    }
+
+}
+/* ==========================================================
+   PART 7 : RESPONSIVE DESIGN
+==========================================================*/
+
+
+/* ==========================================================
+   TABLET
+==========================================================*/
+
+@media (max-width:992px){
+
+    .dashboard-wrapper{
+
+    position:relative;
+
+}
+
+    .dashboard-sidebar{
+
+        position:fixed;
+
+        left:20px;
+
+        top:90px;
+
+        width:270px;
+
+        height:calc(100vh - 110px);
+
+        overflow-y:auto;
+
+        scrollbar-width:none;
+
+        -ms-overflow-style:none;
+
+    }
+
+    .dashboard-sidebar::-webkit-scrollbar{
+
+        display:none;
+
+    }
+
+    .dashboard-content{
+
+        margin-left:300px;
+
+    }
+
+    .stats-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+        gap:20px;
+
+    }
+
+    .welcome-card{
+
+        padding:30px;
+
+    }
+
+    .welcome-left h2{
+
+        font-size:30px;
+
+    }
+
+    .dashboard-ai{
+
+        width:260px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+==========================================================*/
+
+@media (max-width:768px){
+
+    .dashboard-section{
+
+        padding:90px 15px 25px;
+
+    }
+
+    .dashboard-content{
+
+        margin-left:0;
+
+    }
+
+    .dashboard-sidebar{
+
+        position:relative;
+
+        width:100%;
+
+        height:auto;
+
+        top:0;
+
+        left:0;
+
+        margin-bottom:25px;
+
+    }
+
+    .stats-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .premium-card{
+
+        padding:22px;
+
+    }
+
+    .welcome-card{
+
+        padding:25px;
+
+    }
+
+    .welcome-left h2{
+
+        font-size:26px;
+
+    }
+
+    .welcome-left p{
+
+        font-size:15px;
+
+        line-height:28px;
+
+    }
+
+    .dashboard-ai{
+
+        width:220px;
+
+    }
+
+    .prediction-table-card{
+
+        padding:20px;
+
+    }
+
+    .table-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:10px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   SMALL MOBILE
+==========================================================*/
+
+@media (max-width:576px){
+
+    .sidebar-header{
+
+        padding:25px 15px;
+
+    }
+
+    .sidebar-header img{
+
+        width:60px;
+
+        height:60px;
+
+    }
+
+    .sidebar-header h3{
+
+        font-size:20px;
+
+    }
+
+    .sidebar-menu{
+
+        padding:15px;
+
+    }
+
+    .sidebar-menu a{
+
+        font-size:15px;
+
+        padding:12px;
+
+    }
+
+    .sidebar-menu a i{
+
+        width:38px;
+
+        height:38px;
+
+        font-size:16px;
+
+    }
+
+    .card-icon{
+
+        width:60px;
+
+        height:60px;
+
+        min-width:60px;
+
+        font-size:22px;
+
+    }
+
+    .card-content h3{
+
+        font-size:28px;
+
+    }
+
+    .welcome-left h2{
+
+        font-size:22px;
+
+    }
+
+    .welcome-tag{
+
+        font-size:12px;
+
+    }
+
+    .current-date{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+    .dashboard-ai{
+
+        width:180px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   TABLE RESPONSIVE
+==========================================================*/
+
+.table-responsive{
+
+    overflow-x:auto;
+
+    border-radius:18px;
+
+}
+
+.table-responsive table{
+
+    min-width:850px;
+
+}
+
+
+/* ==========================================================
+   IMAGE RESPONSIVE
+==========================================================*/
+
+img{
+
+    max-width:100%;
+
+    height:auto;
+
+}
+
+
+/* ==========================================================
+   SMOOTH SCROLL
+==========================================================*/
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+
+/* ==========================================================
+   DOWNLOAD REPORT CARD
+==========================================================*/
+
+.report-card{
+
+    background:#FFFFFF;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    text-align:center;
+
+    border:1px solid #E5E7EB;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+
+    transition:.35s;
+
+}
+
+.report-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 35px rgba(37,99,235,.15);
+
+}
+
+.report-icon{
+
+    width:80px;
+
+    height:80px;
+
+    border-radius:50%;
+
+    background:#DBEAFE;
+
+    color:#2563EB;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:32px;
+
+    margin:auto auto 20px;
+
+}
+
+.report-card h3{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#1E293B;
+
+    margin-bottom:10px;
+
+}
+
+.report-card p{
+
+    color:#64748B;
+
+    margin-bottom:25px;
+
+    line-height:28px;
+
+}
+
+.report-card .btn{
+
+    border-radius:12px;
+
+    padding:12px 28px;
+
+    font-weight:600;
+
+}
+
+
+/* ==========================================================
+   PREDICTION HISTORY TOOLBAR
+==========================================================*/
+
+.history-toolbar{
+
+    background:#FFFFFF;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.05);
+
+    margin-bottom:25px;
+
+}
+
+.history-toolbar input,
+
+.history-toolbar select{
+
+    height:52px;
+
+}
+
+.history-toolbar .btn{
+
+    height:52px;
+
+}
+
+
+/* ==========================================================
+   HISTORY TABLE
+==========================================================*/
+
+.history-table th{
+
+    font-weight:600;
+
+}
+
+.history-table td{
+
+    vertical-align:middle;
+
+}
+
+.history-table .badge{
+
+    padding:8px 15px;
+
+    font-size:13px;
+
+    border-radius:50px;
+
+}
+
+
+/* ==========================================================
+   DARK MODE SUPPORT
+==========================================================*/
+
+body.dark-mode .report-card{
+
+    background:#1E293B;
+
+    border-color:#334155;
+
+}
+
+body.dark-mode .report-card h3{
+
+    color:#F8FAFC;
+
+}
+
+body.dark-mode .report-card p{
+
+    color:#CBD5E1;
+
+}
+
+body.dark-mode .history-toolbar{
+
+    background:#1E293B;
+
+}
+
+
+/* ==========================================================
+   END OF FILE
+==========================================================*/

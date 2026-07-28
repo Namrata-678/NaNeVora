@@ -1,0 +1,165 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg custom-navbar shadow-sm sticky-top">
+
+    <div class="container">
+
+        <!-- Logo -->
+      
+<a class="navbar-brand d-flex align-items-center"
+   href="{% url 'home' %}">
+
+    <img src="{% static 'images/logo.png' %}"
+         alt="NaNeVora Logo"
+         class="logo-img">
+
+    <div class="ms-2">
+
+        <h4 class="brand-text mb-0">
+            NaNeVora
+        </h4>
+
+        </div>
+
+        </a>
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <!-- Navbar Menu -->
+        <div class="collapse navbar-collapse"
+             id="mainNavbar">
+
+            <!-- Left Menu -->
+            <ul class="navbar-nav mx-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'prediction' %}">
+                        Prediction
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'dashboard' %}">
+                        Dashboard
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'contact' %}">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- Right Side -->
+            <div class="d-flex align-items-center">
+
+                <!-- Dark Mode -->
+
+                <button
+                    type="button"
+                    class="btn btn-light theme-btn me-3"
+                    id="themeToggle"
+                    aria-label="Toggle Dark Mode">
+
+                    <i class="fa-solid fa-moon"></i>
+
+                </button>
+
+                {% if user.is_authenticated %}
+
+                <!-- User Dropdown -->
+                <div class="dropdown">
+
+                    <button class="btn btn-primary dropdown-toggle"
+                            data-bs-toggle="dropdown">
+
+                        <i class="fa-solid fa-user me-1"></i>
+
+                        {{ user.username }}
+
+                    </button>
+
+                    <ul class="dropdown-menu dropdown-menu-end">
+
+                        <li>
+                            <a class="dropdown-item"
+                               href="{% url 'profile' %}">
+                                <i class="fa-solid fa-user me-2"></i>
+                                My Profile
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item"
+                               href="{% url 'dashboard' %}">
+                                <i class="fa-solid fa-chart-line me-2"></i>
+                                Dashboard
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item"
+                               href="{% url 'prediction_history' %}">
+                                <i class="fa-solid fa-clock-rotate-left me-2"></i>
+                                History
+                            </a>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item text-danger"
+                               href="{% url 'logout' %}">
+                                <i class="fa-solid fa-right-from-bracket me-2"></i>
+                                Logout
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                {% else %}
+
+                <!-- Login -->
+                <a href="{% url 'login' %}"
+                   class="btn btn-outline-primary me-2">
+
+                    Login
+
+                </a>
+
+                <!-- Register -->
+                <a href="{% url 'register' %}"
+                   class="btn btn-primary">
+
+                    Register
+
+                </a>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
