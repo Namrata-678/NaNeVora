@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 
-from .models import Prediction, GuestPrediction, UserProfile
+from .models import Prediction, UserProfile
 from .forms import (
     RegisterForm,
     PredictionForm,

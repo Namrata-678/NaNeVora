@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Prediction, UserProfile, GuestPrediction
+from .models import Prediction, UserProfile
 
 
 # ==========================================================
@@ -39,29 +39,6 @@ class PredictionAdmin(admin.ModelAdmin):
     list_per_page = 20
 
 
-# ==========================================================
-# Guest Prediction Admin
-# ==========================================================
-
-@admin.register(GuestPrediction)
-class GuestPredictionAdmin(admin.ModelAdmin):
-
-    list_display = (
-        "id",
-        "session_id",
-        "loan_amount",
-        "income_annum",
-        "prediction_result",
-        "prediction_probability",
-        "created_at",
-    )
-
-    ordering = (
-        "-created_at",
-    )
-
-    list_per_page = 20
-
 
 # ==========================================================
 # User Profile Admin
@@ -73,7 +50,6 @@ class UserProfileAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "user",
-        "language",
         "dark_mode",
         "created_at",
     )

@@ -109,6 +109,10 @@
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'js/darkmode.js' %}"></script>
     <script src="{% static 'js/password.js' %}"></script>
+    <script src="{% static 'js/auto_logout.js' %}"></script>
+    {% if user.is_authenticated %}
+<script src="{% static 'js/auto_logout.js' %}"></script>
+{% endif %}
     <!-- Page JS -->
 
     {% block extra_js %}

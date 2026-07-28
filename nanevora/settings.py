@@ -135,3 +135,12 @@ LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'home'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Session expires after 5 minutes
+SESSION_COOKIE_AGE = 300
+
+# Expire session if browser closes
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# Reset timer after every request
+SESSION_SAVE_EVERY_REQUEST = True
