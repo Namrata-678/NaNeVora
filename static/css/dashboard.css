@@ -78,7 +78,40 @@
 
 }
 
+.dashboard-image-wrapper::before{
 
+    content:"";
+
+    position:absolute;
+
+    width:270px;
+    height:270px;
+
+    border-radius:50%;
+
+    background:
+
+    radial-gradient(circle,
+    rgba(37,99,235,.35),
+    transparent 70%);
+
+    z-index:1;
+
+    animation:pulseGlow 5s infinite;
+
+}
+
+@keyframes pulseGlow{
+
+    50%{
+
+        transform:scale(1.08);
+
+        opacity:.75;
+
+    }
+
+}
 /* ==========================================================
    SIDEBAR HEADER
 ==========================================================*/
@@ -571,24 +604,110 @@
 
 }
 
-.dashboard-ai{
+/* ==============================
+      Dashboard Illustration
+============================== */
 
-    width:300px;
+.dashboard-image-wrapper{
 
-    max-width:100%;
+    position:relative;
 
-    transition:.4s;
+    width:420px;
+    height:320px;
 
-    filter:drop-shadow(0 20px 30px rgba(37,99,235,.18));
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
 }
 
+/* Glass Container */
+
+.dashboard-ai{
+
+    width:330px;
+
+    border-radius:35px;
+
+    padding:20px;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+        0 30px 60px rgba(0,0,0,.25),
+        inset 0 1px 1px rgba(255,255,255,.15);
+
+    animation:floatImage 6s ease-in-out infinite;
+
+    z-index:5;
+
+}
 .dashboard-ai:hover{
 
     transform:translateY(-8px) scale(1.03);
 
 }
+.floating-circle{
 
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(2px);
+
+}
+
+.circle1{
+
+    width:80px;
+    height:80px;
+
+    background:#2563EB;
+
+    opacity:.25;
+
+    top:20px;
+    left:40px;
+
+    animation:move1 7s infinite;
+
+}
+
+.circle2{
+
+    width:45px;
+    height:45px;
+
+    background:#38BDF8;
+
+    opacity:.35;
+
+    right:20px;
+    top:45px;
+
+    animation:move2 5s infinite;
+
+}
+
+.circle3{
+
+    width:60px;
+    height:60px;
+
+    background:#7C3AED;
+
+    opacity:.25;
+
+    bottom:30px;
+    left:80px;
+
+    animation:move3 6s infinite;
+
+}
 
 /* ==========================================================
    DIVIDER
@@ -1467,28 +1586,57 @@
    FLOATING ANIMATION
 ==========================================================*/
 
-@keyframes floating{
+@keyframes floatImage{
 
     0%{
 
-        transform:translateY(0);
+        transform:translateY(0px) rotate(0deg);
 
     }
 
     50%{
 
-        transform:translateY(-10px);
+        transform:translateY(-12px) rotate(.8deg);
 
     }
 
     100%{
 
-        transform:translateY(0);
+        transform:translateY(0px);
 
     }
 
 }
 
+@keyframes move1{
+
+    50%{
+
+        transform:translate(-12px,-10px);
+
+    }
+
+}
+
+@keyframes move2{
+
+    50%{
+
+        transform:translate(15px,-8px);
+
+    }
+
+}
+
+@keyframes move3{
+
+    50%{
+
+        transform:translate(-8px,10px);
+
+    }
+
+}
 .dashboard-ai{
 
     animation:floating 5s ease-in-out infinite;
@@ -1906,7 +2054,27 @@ body.dark-mode .logout i{
     color:#FCA5A5 !important;
 
 }
+body.dark-mode .dashboard-image-wrapper{
 
+    background:radial-gradient(circle at center,
+    rgba(37,99,235,.15),
+    transparent 70%);
+
+}
+
+body.dark-mode .dashboard-ai{
+
+    background:rgba(30,41,59,.55);
+
+    border:1px solid rgba(96,165,250,.25);
+
+    box-shadow:
+
+    0 35px 70px rgba(0,0,0,.45),
+
+    inset 0 1px 1px rgba(255,255,255,.08);
+
+}
 
 /* ==========================================================
    PART 7 : RESPONSIVE DESIGN
