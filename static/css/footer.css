@@ -1,9 +1,7 @@
 /* ==========================================================
    NaNeVora
    Footer CSS
-   Version : 1.0
 ==========================================================*/
-
 
 /* ===========================
    Footer
@@ -11,133 +9,168 @@
 
 .footer{
 
-    background:var(--footer-background);
-
-    color:var(--white);
-
-    padding:60px 0 25px;
-
+    background:#0F213E;
+    color:#ffffff;
+    padding:70px 0 25px;
     margin-top:80px;
 
 }
 
+/* ===========================
+   Grid Alignment
+=========================== */
+
+.footer .row{
+
+    align-items:flex-start;
+
+}
 
 /* ===========================
-   Logo
+   Brand
 =========================== */
+
+.footer-brand{
+
+    display:flex;
+    align-items:center;
+    margin-bottom:25px;
+
+}
 
 .footer-logo{
 
     width:60px;
-
     height:60px;
-
     object-fit:contain;
 
 }
 
-.footer h4{
+.footer h4,
+.footer h5{
 
-    color:var(--white);
-
+    color:#ffffff;
     font-weight:700;
 
 }
 
 .footer h5{
 
-    color:var(--white);
-
-    margin-bottom:20px;
-
-    font-size:20px;
+    margin-bottom:22px;
+    font-size:22px;
 
 }
 
 .footer p{
 
-    color:#CFCFCF;
-
+    color:#D4D8E2;
     line-height:1.8;
+    font-size:15px;
 
 }
 
-
 /* ===========================
-   Footer Links
+   Links
 =========================== */
 
 .footer-links{
 
-    padding:0;
-
-    margin:0;
-
     list-style:none;
+    padding:0;
+    margin:0;
 
 }
 
 .footer-links li{
 
-    margin-bottom:12px;
+    margin-bottom:14px;
 
 }
 
 .footer-links a{
 
-    color:#D8D8D8;
-
+    color:#D4D8E2;
     text-decoration:none;
-
-    transition:var(--transition);
+    transition:.3s;
 
 }
 
 .footer-links a:hover{
 
-    color:var(--white);
-
+    color:#3B82F6;
     padding-left:8px;
 
 }
 
-
 /* ===========================
-   Contact
+   Send Message Button
 =========================== */
 
-.footer-contact{
+.send-message-btn{
 
-    list-style:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
 
-    padding:0;
+    padding:10px 18px;
 
-    margin:0;
+    border-radius:10px;
 
-}
+    background:#2563EB;
 
-.footer-contact li{
+    color:#ffffff;
 
-    margin-bottom:15px;
+    text-decoration:none;
 
-    color:#D8D8D8;
+    font-weight:500;
 
-    display:flex;
-
-    align-items:flex-start;
-
-}
-
-.footer-contact i{
-
-    width:25px;
-
-    color:#4DA3FF;
-
-    margin-top:4px;
+    transition:.3s;
 
 }
 
+.send-message-btn:hover{
+
+    background:#1D4ED8;
+
+    color:#ffffff;
+
+    transform:translateY(-3px);
+
+}
+
+/* ===========================
+   Project Team
+=========================== */
+
+.team-member{
+
+    margin-bottom:22px;
+
+}
+
+.team-member h6{
+
+    color:#ffffff;
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:10px;
+
+}
+
+.team-member p{
+
+    margin-bottom:8px;
+    color:#CBD5E1;
+    font-size:15px;
+
+}
+
+.team-member i{
+
+    width:22px;
+    color:#3B82F6;
+
+}
 
 /* ===========================
    Social Icons
@@ -146,125 +179,120 @@
 .social-icons{
 
     display:flex;
-
-    gap:12px;
+    gap:15px;
+    margin-top:25px;
 
 }
 
 .social-icons a{
 
-    width:42px;
-
-    height:42px;
+    width:45px;
+    height:45px;
 
     border-radius:50%;
 
     display:flex;
-
-    justify-content:center;
-
     align-items:center;
-
-    text-decoration:none;
+    justify-content:center;
 
     background:rgba(255,255,255,.08);
 
-    color:var(--white);
-
-    transition:var(--transition);
+    color:#ffffff;
 
     font-size:18px;
+
+    text-decoration:none;
+
+    transition:.35s;
 
 }
 
 .social-icons a:hover{
 
-    background:var(--primary-color);
+    background:#2563EB;
 
     transform:translateY(-5px);
 
 }
 
-
 /* ===========================
-   Footer Divider
+   Divider
 =========================== */
 
 .footer hr{
 
     border-color:rgba(255,255,255,.15);
-
-    margin:35px 0;
+    margin:40px 0;
 
 }
-
 
 /* ===========================
    Bottom Footer
 =========================== */
 
-.footer .row:last-child p{
+.footer-bottom{
 
-    color:#CFCFCF;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+
+}
+
+.footer-bottom p{
 
     margin:0;
+    color:#CBD5E1;
 
 }
 
-.footer .row:last-child a{
+.footer-bottom a{
 
-    color:#CFCFCF;
-
+    color:#CBD5E1;
     text-decoration:none;
-
-    transition:var(--transition);
-
-}
-
-.footer .row:last-child a:hover{
-
-    color:var(--white);
+    transition:.3s;
 
 }
 
+.footer-bottom a:hover{
+
+    color:#3B82F6;
+
+}
 
 /* ===========================
-   Back To Top Button
+   Back To Top
 =========================== */
 
 .back-to-top{
 
     position:fixed;
 
+    bottom:25px;
     right:25px;
 
-    bottom:25px;
-
     width:50px;
-
     height:50px;
 
     border:none;
 
     border-radius:50%;
 
-    background:var(--primary-color);
+    background:#2563EB;
 
-    color:var(--white);
+    color:#ffffff;
 
-    cursor:pointer;
+    font-size:18px;
 
     display:none;
 
     justify-content:center;
-
     align-items:center;
 
-    font-size:18px;
+    cursor:pointer;
 
-    box-shadow:var(--shadow-lg);
-
-    transition:var(--transition);
+    transition:.3s;
 
     z-index:999;
 
@@ -272,12 +300,11 @@
 
 .back-to-top:hover{
 
-    background:var(--primary-dark);
+    background:#1D4ED8;
 
-    transform:translateY(-4px);
+    transform:translateY(-5px);
 
 }
-
 
 /* ===========================
    Responsive
@@ -297,15 +324,31 @@
 
     }
 
-    .footer-contact li{
+    .social-icons{
 
         justify-content:center;
 
     }
 
-    .social-icons{
+    .footer-bottom{
 
-        justify-content:center;
+        flex-direction:column;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .footer{
+
+        padding:60px 0 20px;
+
+    }
+
+    .footer h5{
+
+        margin-top:25px;
 
     }
 
@@ -313,23 +356,16 @@
 
 @media(max-width:576px){
 
-    .footer{
-
-        padding:50px 0 20px;
-
-    }
-
-    .footer h5{
-
-        margin-top:20px;
-
-    }
-
     .footer-logo{
 
-        width:50px;
+        width:52px;
+        height:52px;
 
-        height:50px;
+    }
+
+    .footer h4{
+
+        font-size:26px;
 
     }
 
