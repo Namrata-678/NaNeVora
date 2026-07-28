@@ -152,6 +152,7 @@ class GuestPrediction(models.Model):
 
     loan_term = models.IntegerField()
 
+
     cibil_score = models.IntegerField()
 
     residential_assets_value = models.FloatField()

@@ -16,6 +16,9 @@ urlpatterns = [
 
 ]
 
+
+
+
 # Serve Media Files During Development
 
 if settings.DEBUG:
