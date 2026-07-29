@@ -5,214 +5,264 @@
 Login | NaNeVora
 {% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
 {% block content %}
 
-<section class="login-section">
+<section class="login-page">
+
+    <!-- Floating Background -->
+
+    <div class="bg-circle circle1"></div>
+    <div class="bg-circle circle2"></div>
+    <div class="bg-circle circle3"></div>
 
     <div class="container">
 
-        <div class="row justify-content-center align-items-center">
+        <div class="login-card">
 
-            <!-- Left Side -->
+            <!-- Logo -->
 
-            <div class="col-lg-5 d-none d-lg-block">
+            <div class="text-center">
 
-                <div class="login-image text-center">
+                <img src="{% static 'images/logo.png' %}"
+                     class="login-logo"
+                     alt="NaNeVora">
 
-                    <img src="{% static 'images/logo.png' %}"
-                         class="img-fluid mb-4"
-                         style="max-width:180px;"
-                         alt="NaNeVora">
+                <h1>
 
-                    <h2>Welcome Back</h2>
+                    Welcome Back 👋
 
-                    <p>
+                </h1>
 
-                        Login to access your dashboard,
-                        prediction history and profile.
+                <p class="subtitle">
 
-                    </p>
+                    Sign in to continue using
+                    <strong>NaNeVora AI</strong>
 
-                </div>
+                </p>
 
             </div>
 
-            <!-- Right Side -->
+            <!-- Django Messages -->
 
-            <div class="col-lg-5">
+            {% if messages %}
 
-                <div class="card shadow-lg border-0 rounded-4">
+                {% for message in messages %}
 
-                    <div class="card-body p-5">
+                    <div class="alert alert-{{ message.tags }}">
 
-                        <h2 class="text-center mb-2">
+                        {{ message }}
 
-                            Sign In
+                    </div>
 
-                        </h2>
+                {% endfor %}
 
-                        <p class="text-center text-muted mb-4">
+            {% endif %}
 
-                            Login to your NaNeVora account
+            <!-- Login Form -->
 
-                        </p>
+            <form method="POST">
 
-                        <!-- Django Messages -->
+                {% csrf_token %}
 
-                        {% if messages %}
+                <!-- Username -->
 
-                            {% for message in messages %}
+                <div class="input-box">
 
-                                <div class="alert alert-{{ message.tags }}">
+                    <label>
 
-                                    {{ message }}
+                        Username
 
-                                </div>
+                    </label>
 
-                            {% endfor %}
+                    <div class="input-group">
 
-                        {% endif %}
+                        <span class="input-group-text">
 
-                        <!-- Login Form -->
+                            <i class="fa-solid fa-user"></i>
 
-                        <form method="POST">
+                        </span>
 
-                            {% csrf_token %}
+                        <input
 
-                            <!-- Username -->
+                            type="text"
 
-                            <div class="mb-3">
+                            name="username"
 
-                                <label>
+                            class="form-control"
 
-                                    Username
+                            placeholder="Enter Username"
 
-                                </label>
-
-                                <input type="text"
-
-                                       name="username"
-
-                                       class="form-control"
-
-                                       placeholder="Enter Username"
-
-                                       required>
-
-                            </div>
-
-                            <!-- Password -->
-<div class="mb-3">
-
-    <label>Password</label>
-
-    <div class="input-group">
-
-        <input
-            type="password"
-            id="password"
-            name="password"
-            class="form-control"
-            placeholder="Enter Password"
-            required>
-
-        <button
-            type="button"
-            class="btn btn-outline-secondary"
-            onclick="togglePassword('password','eye')">
-
-            <i id="eye" class="fa-solid fa-eye"></i>
-
-        </button>
-
-    </div>
-
-</div>
-                            <!-- Remember -->
-
-                            <div class="d-flex justify-content-between mb-4">
-
-                                <div>
-
-                                    <input type="checkbox"
-
-                                           id="remember">
-
-                                    <label for="remember">
-
-                                        Remember Me
-
-                                    </label>
-
-                                </div>
-
-<a href="#">
-    Forgot Password?
-</a>
-
-                            </div>
-
-                            <button
-
-                                type="submit"
-
-                                class="btn btn-primary w-100">
-
-                                Login
-
-                            </button>
-
-                        </form>
-
-                        <hr>
-
-                        <!-- Google Login -->
-
-                        <a href="#"
-
-                           class="btn btn-outline-danger w-100 mb-3">
-
-                            <i class="fab fa-google"></i>
-
-                            Continue with Google
-
-                        </a>
-
-                        <!-- LinkedIn -->
-
-                        <a href="#"
-
-                           class="btn btn-outline-primary w-100">
-
-                            <i class="fab fa-linkedin"></i>
-
-                            Continue with LinkedIn
-
-                        </a>
-
-                        <div class="text-center mt-4">
-
-                            Don't have an account?
-
-                            <a href="{% url 'register' %}">
-
-                                Register
-
-                            </a>
-
-                        </div>
+                            required>
 
                     </div>
 
                 </div>
 
-            </div>
+                <!-- Password -->
+
+                <div class="input-box mt-3">
+
+                    <label>
+
+                        Password
+
+                    </label>
+
+                    <div class="input-group">
+
+                        <span class="input-group-text">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                        </span>
+
+                        <input
+
+                            type="password"
+
+                            id="password"
+
+                            name="password"
+
+                            class="form-control"
+
+                            placeholder="Enter Password"
+
+                            required>
+
+                        <button
+
+                            type="button"
+
+                            class="btn btn-outline-secondary"
+
+                            onclick="togglePassword('password','eye')">
+
+                            <i id="eye"
+
+                               class="fa-solid fa-eye">
+
+                            </i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Remember -->
+
+                <div class="remember-box">
+
+                    <div>
+
+                        <input
+
+                            type="checkbox"
+
+                            id="remember">
+
+                        <label for="remember">
+
+                            Remember Me
+
+                        </label>
+
+                    </div>
+
+                    <a href="#">
+
+                        Forgot Password?
+
+                    </a>
+
+                </div>
+                                <!-- Secure Login Button -->
+
+                <button
+                    type="submit"
+                    class="btn login-btn w-100">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    Secure Login
+
+                </button>
+
+                <!-- Divider -->
+
+                <div class="divider">
+
+                    <span>
+
+                        OR
+
+                    </span>
+
+                </div>
+
+                <!-- Google Login -->
+
+                <a href="#"
+                   class="social-btn google-btn">
+
+                    <i class="fab fa-google"></i>
+
+                    Continue with Google
+
+                </a>
+
+                <!-- LinkedIn Login -->
+
+                <a href="#"
+                   class="social-btn linkedin-btn">
+
+                    <i class="fab fa-linkedin"></i>
+
+                    Continue with LinkedIn
+
+                </a>
+
+                <!-- Security -->
+
+                <div class="security-box">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    Protected with 256-bit SSL Encryption
+
+                </div>
+
+                <!-- Register -->
+
+                <div class="register-text">
+
+                    Don't have an account?
+
+                    <a href="{% url 'register' %}">
+
+                        Create Account
+
+                    </a>
+
+                </div>
+
+            </form>
 
         </div>
 
     </div>
 
 </section>
+
+<!-- ==========================
+     Password Show/Hide
+========================== -->
+
 <script>
 
 function togglePassword(inputId, eyeId){
@@ -225,25 +275,29 @@ function togglePassword(inputId, eyeId){
 
         input.type="text";
 
-        eye.classList.replace("fa-eye","fa-eye-slash");
+        eye.classList.remove("fa-eye");
+
+        eye.classList.add("fa-eye-slash");
 
     }
+
     else{
 
         input.type="password";
 
-        eye.classList.replace("fa-eye-slash","fa-eye");
+        eye.classList.remove("fa-eye-slash");
+
+        eye.classList.add("fa-eye");
 
     }
 
 }
 
 </script>
+
 {% endblock %}
 
 {% block extra_js %}
-
-<script src="{% static 'js/password.js' %}"></script>
 
 <script src="{% static 'js/validation.js' %}"></script>
 
