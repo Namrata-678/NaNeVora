@@ -15,12 +15,7 @@ from .forms import (
 def home(request):
 
     return render(request, "index.html")
-
 def register(request):
-
-    if request.user.is_authenticated:
-
-        return redirect("dashboard")
 
     if request.method == "POST":
 
@@ -28,13 +23,23 @@ def register(request):
 
         if form.is_valid():
 
-            user = form.save()
+            user = User.objects.create_user(
 
-            UserProfile.objects.create(user=user)
+                username=form.cleaned_data["username"],
+                first_name=form.cleaned_data["first_name"],
+                last_name=form.cleaned_data["last_name"],
+                email=form.cleaned_data["email"],
+                password=form.cleaned_data["password1"]
+
+            )
+
+            UserProfile.objects.create(
+                user=user
+            )
 
             messages.success(
                 request,
-                "Your account has been created successfully.. Please login."
+                "Registration Successful."
             )
 
             return redirect("login")
@@ -50,7 +55,6 @@ def register(request):
             "form": form
         }
     )
-
 def login_view(request):
 
     if request.user.is_authenticated:

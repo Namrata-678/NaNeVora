@@ -159,19 +159,38 @@ Register | NaNeVora
 
             {% endif %}
 
-            {% if form.errors %}
+{% if form.errors %}
 
-            <div class="alert alert-danger">
+<div class="alert alert-danger">
 
-                <strong>
+    <strong>Please correct the following:</strong>
 
-                    Please correct the errors below.
+    <ul class="mt-2 mb-0">
 
-                </strong>
+        {% for field in form %}
 
-            </div>
+            {% for error in field.errors %}
 
-            {% endif %}
+                <li>
+                    <strong>{{ field.label }}:</strong>
+                    {{ error }}
+                </li>
+
+            {% endfor %}
+
+        {% endfor %}
+
+        {% for error in form.non_field_errors %}
+
+            <li>{{ error }}</li>
+
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+{% endif %}
 
             <form method="POST">
 

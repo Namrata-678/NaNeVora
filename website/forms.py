@@ -8,75 +8,62 @@ from .models import Prediction, UserProfile
 # ==========================================================
 # Register Form
 # ==========================================================
+class RegisterForm(forms.ModelForm):
 
-class RegisterForm(UserCreationForm):
-
-    first_name = forms.CharField(
-        required=True,
-        widget=forms.TextInput(attrs={
-            "class": "form-control",
-            "placeholder": "Enter First Name"
-        })
+    password1 = forms.CharField(
+        widget=forms.PasswordInput()
     )
 
-    last_name = forms.CharField(
-        required=True,
-        widget=forms.TextInput(attrs={
-            "class": "form-control",
-            "placeholder": "Enter Last Name"
-        })
-    )
-
-    email = forms.EmailField(
-        required=True,
-        widget=forms.EmailInput(attrs={
-            "class": "form-control",
-            "placeholder": "Enter Email Address"
-        })
+    password2 = forms.CharField(
+        widget=forms.PasswordInput()
     )
 
     class Meta:
         model = User
-        fields = (
+        fields = [
             "first_name",
             "last_name",
             "username",
             "email",
-            "password1",
-            "password2",
-        )
+        ]
 
-    def __init__(self, *args, **kwargs):
+    def clean(self):
 
-        super().__init__(*args, **kwargs)
+        cleaned_data = super().clean()
 
-        self.fields["username"].widget.attrs.update({
-            "class": "form-control",
-            "placeholder": "Choose Username"
-        })
+        password1 = cleaned_data.get("password1")
+        password2 = cleaned_data.get("password2")
 
-        self.fields["password1"].widget.attrs.update({
-            "class": "form-control",
-            "placeholder": "Create Password"
-        })
-
-        self.fields["password2"].widget.attrs.update({
-            "class": "form-control",
-            "placeholder": "Confirm Password"
-        })
-
-    def clean_email(self):
-
-        email = self.cleaned_data["email"]
-
-        if User.objects.filter(email=email).exists():
+        if password1 != password2:
             raise forms.ValidationError(
-                "Email address is already registered."
+                "Passwords do not match."
             )
 
-        return email
+        return cleaned_data
+def clean_username(self):
+
+    username = self.cleaned_data["username"]
+
+    if User.objects.filter(username=username).exists():
+
+        raise forms.ValidationError(
+            "Username already exists."
+        )
+
+    return username
 
 
+def clean_email(self):
+
+    email = self.cleaned_data["email"]
+
+    if User.objects.filter(email=email).exists():
+
+        raise forms.ValidationError(
+            "Email already registered."
+        )
+
+    return email
 # ==========================================================
 # Prediction Form
 # ==========================================================
