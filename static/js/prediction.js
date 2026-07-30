@@ -8,19 +8,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!predictionForm) return;
 
-    predictionForm.addEventListener("submit", function (event) {
+predictionForm.addEventListener("submit", function (event) {
 
-        if (!validatePredictionForm()) {
+    if (!validatePredictionForm()) {
 
-            event.preventDefault();
+        event.preventDefault();
 
-            return;
+        return;
 
-        }
+    }
 
-        showLoading();
+    // Remove commas before sending data to Django
+    moneyFields.forEach(function(field){
+
+        field.value = field.value.replace(/,/g,"");
 
     });
+
+    showLoading();
+
+});
 
 });
 
@@ -34,9 +41,7 @@ function validatePredictionForm() {
     let valid = true;
 
     const requiredFields = document.querySelectorAll(
-
         "#predictionForm [required]"
-
     );
 
     requiredFields.forEach(function (field) {
@@ -46,7 +51,6 @@ function validatePredictionForm() {
         if (field.value.trim() === "") {
 
             field.classList.add("is-invalid");
-
             valid = false;
 
         }
@@ -57,6 +61,23 @@ function validatePredictionForm() {
 
 }
 
+function allowOnlyNumbers(id) {
+
+    const input = document.getElementById(id);
+
+    if (!input) return;
+
+    input.addEventListener("input", function () {
+
+        this.value = this.value.replace(/[^0-9]/g, "");
+
+    });
+
+}
+
+allowOnlyNumbers("annual_income");
+allowOnlyNumbers("loan_amount");
+
 
 /* ==========================================
    Loading Screen
@@ -65,9 +86,7 @@ function validatePredictionForm() {
 function showLoading() {
 
     const overlay = document.getElementById("loadingOverlay");
-
     const progressBar = document.getElementById("loadingProgress");
-
     const form = document.getElementById("predictionForm");
 
     if (overlay) {
@@ -75,8 +94,6 @@ function showLoading() {
         overlay.style.display = "flex";
 
     }
-
-    /* Disable all form fields */
 
     form.querySelectorAll("input, select, button").forEach(function (element) {
 
@@ -97,7 +114,6 @@ function showLoading() {
         }
 
         progressBar.style.width = progress + "%";
-
         progressBar.innerHTML = progress + "%";
 
         if (progress >= 100) {
@@ -111,51 +127,34 @@ function showLoading() {
 }
 
 /* ==========================================
-   Loan Amount Formatter
+   Currency Fields
 ========================================== */
 
-const loanAmount = document.getElementById("loan_amount");
+const moneyFields = document.querySelectorAll(
 
-if (loanAmount) {
+'#annual_income, #loan_amount, [name="residential_assets_value"], [name="commercial_assets_value"], [name="luxury_assets_value"], [name="bank_asset_value"]'
 
-    loanAmount.addEventListener("input", function () {
+);
 
-        let value = this.value.replace(/,/g, "");
+moneyFields.forEach(function(field){
 
-        if (!isNaN(value) && value !== "") {
+    field.addEventListener("input", function(){
 
-            this.value = Number(value).toLocaleString("en-IN");
+        let value = this.value.replace(/\D/g,"");
+
+        if(value===""){
+
+            this.value="";
+
+            return;
 
         }
 
-    });
-
-}
-
-
-/* ==========================================
-   Annual Income Formatter
-========================================== */
-
-const annualIncome = document.getElementById("annual_income");
-
-if (annualIncome) {
-
-    annualIncome.addEventListener("input", function () {
-
-        let value = this.value.replace(/,/g, "");
-
-        if (!isNaN(value) && value !== "") {
-
-            this.value = Number(value).toLocaleString("en-IN");
-
-        }
+        this.value = Number(value).toLocaleString("en-IN");
 
     });
 
-}
-
-
+});
 /* ==========================================
    Reset Button
 ========================================== */

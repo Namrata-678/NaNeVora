@@ -112,6 +112,38 @@ class Prediction(models.Model):
     def __str__(self):
 
         return f"{self.user.username} - {self.prediction_result}"
+    
+    prediction_probability = models.FloatField(
+        default=0
+    )
+
+# Prediction Status
+    status = models.CharField(
+    max_length=20,
+    default="Completed"
+    )
+
+# Risk Level
+    risk_level = models.CharField(
+    max_length=20,
+    default="Low"
+    )
+
+# AI Recommendation
+recommendation = models.TextField(
+    blank=True
+)
+
+# Model Version
+model_version = models.CharField(
+    max_length=20,
+    default="v1.0"
+)
+
+# Processing Time (seconds)
+processing_time = models.FloatField(
+    default=0
+)
 # ==========================================================
 # Contact Messages
 # ==========================================================
