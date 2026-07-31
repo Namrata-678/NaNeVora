@@ -191,15 +191,7 @@ def prediction(request):
 
             prediction.save()
 
-            messages.success(
-
-                request,
-
-                "Prediction completed successfully."
-
-            )
-
-            return redirect("dashboard")
+            return redirect("result", prediction_id=prediction.id)
 
     else:
 
@@ -455,3 +447,30 @@ def update_profile(request):
         messages.success(request, "Profile updated successfully.")
 
     return redirect("dashboard")
+
+@login_required
+def result(request, prediction_id):
+
+    prediction = get_object_or_404(
+
+        Prediction,
+
+        id=prediction_id,
+
+        user=request.user
+
+    )
+
+    return render(
+
+        request,
+
+        "result.html",
+
+        {
+
+            "prediction": prediction
+
+        }
+
+    )

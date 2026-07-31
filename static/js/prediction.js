@@ -8,41 +8,69 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!predictionForm) return;
 
-predictionForm.addEventListener("submit", function (event) {
+    /* ==========================================
+       Money Fields
+    ========================================== */
 
-    if (!validatePredictionForm()) {
+    const moneyFields = document.querySelectorAll(
+        '#annual_income, #loan_amount, [name="residential_assets_value"], [name="commercial_assets_value"], [name="luxury_assets_value"], [name="bank_asset_value"]'
+    );
 
-        event.preventDefault();
+    moneyFields.forEach(function (field) {
 
-        return;
+        field.addEventListener("input", function () {
 
-    }
+            // Keep only digits
+            let value = this.value.replace(/\D/g, "");
 
-    // Remove commas before sending data to Django
-    moneyFields.forEach(function(field){
+            if (value === "") {
+                this.value = "";
+                return;
+            }
 
-        field.value = field.value.replace(/,/g,"");
+            // Format in Indian style
+            this.value = Number(value).toLocaleString("en-IN");
+
+        });
 
     });
 
-    showLoading();
+    /* ==========================================
+       Form Submit
+    ========================================== */
 
-});
+    predictionForm.addEventListener("submit", function (event) {
+
+        if (!validatePredictionForm()) {
+
+            event.preventDefault();
+            return;
+
+        }
+
+        // Remove commas before sending to Django
+        moneyFields.forEach(function (field) {
+
+            field.value = field.value.replace(/,/g, "");
+
+        });
+
+        showLoading();
+
+    });
 
 });
 
 
 /* ==========================================
-   Prediction Form Validation
+   Validation
 ========================================== */
 
 function validatePredictionForm() {
 
     let valid = true;
 
-    const requiredFields = document.querySelectorAll(
-        "#predictionForm [required]"
-    );
+    const requiredFields = document.querySelectorAll("#predictionForm [required]");
 
     requiredFields.forEach(function (field) {
 
@@ -61,33 +89,14 @@ function validatePredictionForm() {
 
 }
 
-function allowOnlyNumbers(id) {
-
-    const input = document.getElementById(id);
-
-    if (!input) return;
-
-    input.addEventListener("input", function () {
-
-        this.value = this.value.replace(/[^0-9]/g, "");
-
-    });
-
-}
-
-allowOnlyNumbers("annual_income");
-allowOnlyNumbers("loan_amount");
-
 
 /* ==========================================
    Loading Screen
 ========================================== */
-
 function showLoading() {
 
     const overlay = document.getElementById("loadingOverlay");
     const progressBar = document.getElementById("loadingProgress");
-    const form = document.getElementById("predictionForm");
 
     if (overlay) {
 
@@ -95,11 +104,13 @@ function showLoading() {
 
     }
 
-    form.querySelectorAll("input, select, button").forEach(function (element) {
+    const predictBtn = document.getElementById("predictBtn");
 
-        element.disabled = true;
+    if (predictBtn) {
 
-    });
+        predictBtn.disabled = true;
+
+    }
 
     let progress = 0;
 
@@ -107,11 +118,7 @@ function showLoading() {
 
         progress += 5;
 
-        if (progress > 100) {
-
-            progress = 100;
-
-        }
+        if (progress > 100) progress = 100;
 
         progressBar.style.width = progress + "%";
         progressBar.innerHTML = progress + "%";
@@ -125,36 +132,6 @@ function showLoading() {
     }, 120);
 
 }
-
-/* ==========================================
-   Currency Fields
-========================================== */
-
-const moneyFields = document.querySelectorAll(
-
-'#annual_income, #loan_amount, [name="residential_assets_value"], [name="commercial_assets_value"], [name="luxury_assets_value"], [name="bank_asset_value"]'
-
-);
-
-moneyFields.forEach(function(field){
-
-    field.addEventListener("input", function(){
-
-        let value = this.value.replace(/\D/g,"");
-
-        if(value===""){
-
-            this.value="";
-
-            return;
-
-        }
-
-        this.value = Number(value).toLocaleString("en-IN");
-
-    });
-
-});
 /* ==========================================
    Reset Button
 ========================================== */

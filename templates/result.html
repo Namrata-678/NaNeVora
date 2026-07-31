@@ -1,0 +1,357 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Prediction Result | NaNeVora
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/result.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<section class="result-section">
+
+<div class="container">
+
+<div class="row justify-content-center">
+
+<div class="col-lg-10">
+
+<div class="card result-card shadow-lg">
+
+<!-- ========================= -->
+<!-- Header -->
+<!-- ========================= -->
+
+<div class="card-header text-center">
+
+<h2>
+
+AI Loan Assessment Result
+
+</h2>
+
+<p>
+
+Your loan application has been analyzed successfully.
+
+</p>
+
+</div>
+
+<div class="card-body">
+
+<!-- ========================= -->
+<!-- Result -->
+<!-- ========================= -->
+
+<div class="text-center mb-5">
+
+{% if prediction.prediction_result == "Approved" %}
+
+<div class="status-icon approved">
+
+<i class="fa-solid fa-circle-check"></i>
+
+</div>
+
+<h2 class="text-success">
+
+Loan Approved
+
+</h2>
+
+{% else %}
+
+<div class="status-icon rejected">
+
+<i class="fa-solid fa-circle-xmark"></i>
+
+</div>
+
+<h2 class="text-danger">
+
+Loan Rejected
+
+</h2>
+
+{% endif %}
+
+</div>
+
+<!-- ========================= -->
+<!-- Summary Cards -->
+<!-- ========================= -->
+
+<div class="row g-4 mb-5">
+
+<div class="col-md-4">
+
+<div class="summary-box">
+
+<h6>
+
+Confidence
+
+</h6>
+
+<h3>
+
+{{ prediction.prediction_probability }}%
+
+</h3>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="summary-box">
+
+<h6>
+
+Risk Level
+
+</h6>
+
+<h3>
+
+{{ prediction.risk_level }}
+
+</h3>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="summary-box">
+
+<h6>
+
+Status
+
+</h6>
+
+<h3>
+
+{{ prediction.status }}
+
+</h3>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- Applicant Details -->
+<!-- ========================= -->
+
+<h4 class="section-title">
+
+Applicant Summary
+
+</h4>
+
+<div class="table-responsive">
+
+<table class="table table-bordered">
+
+<tbody>
+
+<tr>
+
+<th>Annual Income</th>
+
+<td>₹ {{ prediction.income_annum }}</td>
+
+<th>Loan Amount</th>
+
+<td>₹ {{ prediction.loan_amount }}</td>
+
+</tr>
+
+<tr>
+
+<th>Loan Term</th>
+
+<td>{{ prediction.loan_term }} Months</td>
+
+<th>CIBIL Score</th>
+
+<td>{{ prediction.cibil_score }}</td>
+
+</tr>
+
+<tr>
+
+<th>Education</th>
+
+<td>{{ prediction.education }}</td>
+
+<th>Self Employed</th>
+
+<td>{{ prediction.self_employed }}</td>
+
+</tr>
+
+<tr>
+
+<th>Dependents</th>
+
+<td>{{ prediction.no_of_dependents }}</td>
+
+<th>Date</th>
+
+<td>{{ prediction.created_at }}</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<!-- ========================= -->
+<!-- Financial Ratios -->
+<!-- ========================= -->
+
+<h4 class="section-title mt-5">
+
+Financial Analysis
+
+</h4>
+
+<div class="row">
+
+<div class="col-md-6">
+
+<div class="analysis-box">
+
+<h6>
+
+Loan / Income Ratio
+
+</h6>
+
+<h4>
+
+{{ prediction.loan_income_ratio|floatformat:2 }}
+
+</h4>
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+
+<div class="analysis-box">
+
+<h6>
+
+Asset / Loan Ratio
+
+</h6>
+
+<h4>
+
+{{ prediction.asset_loan_ratio|floatformat:2 }}
+
+</h4>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ========================= -->
+<!-- AI Recommendation -->
+<!-- ========================= -->
+
+<div class="recommendation mt-5">
+
+<h4>
+
+AI Recommendation
+
+</h4>
+
+{% if prediction.prediction_result == "Approved" %}
+
+<p>
+
+Based on the applicant's financial profile,
+the loan application demonstrates a healthy repayment
+capacity and acceptable credit behaviour.
+
+</p>
+
+{% else %}
+
+<p>
+
+The applicant's current financial profile
+indicates a higher repayment risk.
+Improving credit score and reducing loan burden
+may improve future approval chances.
+
+</p>
+
+{% endif %}
+
+</div>
+
+<!-- ========================= -->
+<!-- Buttons -->
+<!-- ========================= -->
+
+<div class="text-center mt-5">
+
+<a href="{% url 'prediction' %}" class="btn btn-primary me-3">
+
+<i class="fa-solid fa-rotate"></i>
+
+Predict Again
+
+</a>
+
+<a href="{% url 'dashboard' %}" class="btn btn-success me-3">
+
+<i class="fa-solid fa-chart-line"></i>
+
+Dashboard
+
+</a>
+
+<a href="{% url 'download_report' %}" class="btn btn-dark">
+
+<i class="fa-solid fa-download"></i>
+
+Download Report
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+{% endblock %}

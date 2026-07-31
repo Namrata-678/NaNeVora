@@ -53,4 +53,9 @@ urlpatterns = [
     views.update_profile,
     name="update_profile",
 ),
+path(
+    "result/<int:prediction_id>/",
+    views.result,
+    name="result"
+),
 ]

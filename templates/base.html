@@ -38,7 +38,6 @@
     <link rel="stylesheet" href="{% static 'css/darkmode.css' %}">
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
     <link rel="stylesheet" href="{% static 'css/animations.css' %}">
-    <link rel="stylesheet" href="{% static 'css/prediction.css' %}">
     <!-- Page CSS -->
     {% block extra_css %}
 
@@ -109,8 +108,7 @@
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'js/darkmode.js' %}"></script>
     <script src="{% static 'js/password.js' %}"></script>
-    <script src="{% static 'js/auto_logout.js' %}"></script>
-    {% if user.is_authenticated %}
+ {% if user.is_authenticated %}
 <script src="{% static 'js/auto_logout.js' %}"></script>
 {% endif %}
     <!-- Page JS -->

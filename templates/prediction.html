@@ -166,15 +166,16 @@ max="900"
 required>
 
 </div>
-
 <div class="col-md-6 mb-4">
 
 <label>Residential Assets (₹)</label>
 
 <input
-type="number"
+type="text"
 name="residential_assets_value"
 class="form-control"
+inputmode="numeric"
+placeholder="Enter Residential Assets"
 required>
 
 </div>
@@ -184,9 +185,11 @@ required>
 <label>Commercial Assets (₹)</label>
 
 <input
-type="number"
+type="text"
 name="commercial_assets_value"
 class="form-control"
+inputmode="numeric"
+placeholder="Enter Commercial Assets"
 required>
 
 </div>
@@ -196,9 +199,11 @@ required>
 <label>Luxury Assets (₹)</label>
 
 <input
-type="number"
+type="text"
 name="luxury_assets_value"
 class="form-control"
+inputmode="numeric"
+placeholder="Enter Luxury Assets"
 required>
 
 </div>
@@ -208,9 +213,11 @@ required>
 <label>Bank Assets (₹)</label>
 
 <input
-type="number"
+type="text"
 name="bank_asset_value"
 class="form-control"
+inputmode="numeric"
+placeholder="Enter Bank Assets"
 required>
 
 </div>
@@ -247,45 +254,6 @@ required>
 
 </div>
 
-<!-- AI Loading Overlay -->
-
-<div id="loadingOverlay" class="loading-overlay">
-
-    <div class="loading-box">
-
-        <div class="spinner-border text-primary mb-4"
-             style="width:70px;height:70px;"
-             role="status">
-
-        </div>
-
-        <h3 class="mb-3">
-
-            AI is analyzing your application...
-
-        </h3>
-
-        <p id="loadingMessage">
-
-            Please wait while we process your loan details.
-
-        </p>
-
-        <div class="progress mt-4">
-
-            <div id="loadingProgress"
-                 class="progress-bar progress-bar-striped progress-bar-animated"
-                 style="width:0%">
-
-                0%
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
 </section>
 {% endblock %}
 {% block extra_js %}

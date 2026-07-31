@@ -1,6 +1,11 @@
+/* ==========================================================
+   NaNeVora - Auto Logout
+========================================================== */
+
 let inactivityTimer;
 
-const TIMEOUT = 5 * 60 * 1000; // 5 minutes
+// 1 Hour
+const TIMEOUT = 60 * 60 * 1000;
 
 function resetTimer() {
 
@@ -25,7 +30,7 @@ function logoutUser() {
     "touchstart",
     "scroll",
     "click"
-].forEach(function(event){
+].forEach(function (event) {
 
     document.addEventListener(event, resetTimer);
 
