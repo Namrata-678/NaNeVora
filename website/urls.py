@@ -58,4 +58,5 @@ path(
     views.result,
     name="result"
 ),
+
 ]

@@ -78,6 +78,8 @@ class PredictionForm(forms.ModelForm):
             "prediction_probability",
             "loan_income_ratio",
             "asset_loan_ratio",
+            "risk_level",
+            "status",
             "created_at",
         ]
 

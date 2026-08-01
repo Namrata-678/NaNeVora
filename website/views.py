@@ -137,7 +137,6 @@ def dashboard(request):
 # ==========================================================
 # Prediction
 # ==========================================================
-
 @login_required
 def prediction(request):
 
@@ -146,6 +145,8 @@ def prediction(request):
         form = PredictionForm(request.POST)
 
         if form.is_valid():
+
+            print("FORM IS VALID")
 
             prediction = form.save(commit=False)
 
@@ -173,42 +174,56 @@ def prediction(request):
             )
 
             prediction.asset_loan_ratio = (
-
                 total_assets /
-
                 prediction.loan_amount
-
             )
 
-            # -----------------------------
-            # Temporary Result
-            # ML Integration Later
-            # -----------------------------
+            # ----------------------------------
+            # Temporary Prediction
+            # ----------------------------------
 
-            prediction.prediction_result = "Approved"
+            if prediction.cibil_score >= 700:
 
-            prediction.prediction_probability = 0.95
+                prediction.prediction_result = "Approved"
+                prediction.prediction_probability = 92
+                prediction.risk_level = "Low"
+
+            elif prediction.cibil_score >= 600:
+
+                prediction.prediction_result = "Approved"
+                prediction.prediction_probability = 75
+                prediction.risk_level = "Medium"
+
+            else:
+
+                prediction.prediction_result = "Rejected"
+                prediction.prediction_probability = 35
+                prediction.risk_level = "High"
+
+            prediction.status = "Completed"
 
             prediction.save()
 
-            return redirect("result", prediction_id=prediction.id)
+            print("Prediction Saved:", prediction.id)
+
+            return redirect(
+                "result",
+                prediction.id
+            )
+
+        else:
+            print(form.errors)
 
     else:
 
         form = PredictionForm()
 
     return render(
-
         request,
-
         "prediction.html",
-
         {
-
             "form": form
-
         }
-
     )
 
 
@@ -447,30 +462,19 @@ def update_profile(request):
         messages.success(request, "Profile updated successfully.")
 
     return redirect("dashboard")
-
 @login_required
 def result(request, prediction_id):
 
     prediction = get_object_or_404(
-
         Prediction,
-
         id=prediction_id,
-
         user=request.user
-
     )
 
     return render(
-
         request,
-
         "result.html",
-
         {
-
             "prediction": prediction
-
         }
-
     )

@@ -1,0 +1,386 @@
+/* ==========================================================
+   NaNeVora
+   Result Page
+========================================================== */
+
+.result-section{
+
+    min-height:100vh;
+
+    padding:120px 0 70px;
+
+    background:linear-gradient(135deg,#F5F9FF,#FFFFFF);
+
+}
+
+/* ==========================================================
+   Card
+========================================================== */
+
+.result-card{
+
+    border:none;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.10);
+
+}
+
+.result-card .card-header{
+
+    background:#0D6EFD;
+
+    color:#fff;
+
+    padding:35px;
+
+    text-align:center;
+
+}
+
+.result-card .card-header h2{
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.result-card .card-header p{
+
+    margin:0;
+
+    opacity:.9;
+
+}
+
+.result-card .card-body{
+
+    padding:45px;
+
+}
+
+/* ==========================================================
+   Status Icon
+========================================================== */
+
+.status-icon{
+
+    width:110px;
+
+    height:110px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:55px;
+
+    margin-bottom:20px;
+
+}
+
+.approved{
+
+    background:#E8FFF1;
+
+    color:#198754;
+
+}
+
+.rejected{
+
+    background:#FFECEC;
+
+    color:#DC3545;
+
+}
+
+/* ==========================================================
+   Summary Cards
+========================================================== */
+
+.summary-box{
+
+    background:#F8F9FC;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    text-align:center;
+
+    transition:.3s;
+
+    border:1px solid #E5E7EB;
+
+}
+
+.summary-box:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.summary-box h6{
+
+    color:#6C757D;
+
+    margin-bottom:10px;
+
+}
+
+.summary-box h3{
+
+    font-weight:700;
+
+    color:#0D6EFD;
+
+}
+
+/* ==========================================================
+   Section Title
+========================================================== */
+
+.section-title{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    margin-bottom:25px;
+
+    color:#222;
+
+}
+
+/* ==========================================================
+   Table
+========================================================== */
+
+.table{
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+}
+
+.table th{
+
+    width:25%;
+
+    background:#F5F7FA;
+
+    font-weight:600;
+
+}
+
+.table td{
+
+    font-weight:500;
+
+}
+
+/* ==========================================================
+   Analysis Box
+========================================================== */
+
+.analysis-box{
+
+    background:#F8F9FC;
+
+    border-left:5px solid #0D6EFD;
+
+    border-radius:12px;
+
+    padding:20px;
+
+    margin-bottom:20px;
+
+}
+
+.analysis-box h6{
+
+    color:#666;
+
+    margin-bottom:10px;
+
+}
+
+.analysis-box h4{
+
+    font-weight:700;
+
+    color:#0D6EFD;
+
+}
+
+/* ==========================================================
+   Recommendation
+========================================================== */
+
+.recommendation{
+
+    background:#EEF6FF;
+
+    border-radius:15px;
+
+    padding:30px;
+
+    border-left:5px solid #0D6EFD;
+
+}
+
+.recommendation h4{
+
+    margin-bottom:15px;
+
+    font-weight:700;
+
+}
+
+.recommendation p{
+
+    margin:0;
+
+    line-height:1.8;
+
+    color:#444;
+
+}
+
+/* ==========================================================
+   Buttons
+========================================================== */
+
+.result-section .btn{
+
+    padding:12px 30px;
+
+    border-radius:10px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.result-section .btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================================
+   Dark Mode
+========================================================== */
+
+body.dark-mode .result-section{
+
+    background:#121212;
+
+}
+
+body.dark-mode .result-card{
+
+    background:#1E1E1E;
+
+    color:#fff;
+
+}
+
+body.dark-mode .summary-box,
+
+body.dark-mode .analysis-box,
+
+body.dark-mode .recommendation{
+
+    background:#2B2B2B;
+
+    color:#fff;
+
+}
+
+body.dark-mode .table{
+
+    color:#fff;
+
+}
+
+body.dark-mode .table th{
+
+    background:#333;
+
+}
+
+body.dark-mode .table td{
+
+    background:#222;
+
+}
+
+body.dark-mode .section-title{
+
+    color:#fff;
+
+}
+
+/* ==========================================================
+   Animation
+========================================================== */
+
+.result-card{
+
+    animation:fadeUp .8s ease;
+
+}
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media(max-width:768px){
+
+    .result-card .card-body{
+
+        padding:25px;
+
+    }
+
+    .status-icon{
+
+        width:90px;
+
+        height:90px;
+
+        font-size:45px;
+
+    }
+
+    .section-title{
+
+        font-size:20px;
+
+    }
+
+    .result-section .btn{
+
+        width:100%;
+
+        margin-bottom:15px;
+
+    }
+
+}
