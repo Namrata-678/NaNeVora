@@ -11,116 +11,96 @@ Prediction History | NaNeVora
 
 {% block content %}
 
-<!-- ===========================
-     History Banner
-=========================== -->
-
-<section class="history-banner">
-
-    <div class="container text-center">
-
-        <h1>
-
-            Prediction History
-
-        </h1>
-
-        <p>
-
-            View all your previous AI loan assessment results.
-
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- ===========================
-     History Section
-=========================== -->
-
-<section class="history-section py-5">
+<section class="history-section">
 
     <div class="container">
 
-        <!-- Search Box -->
+        <div class="history-card">
 
-        <div class="row mb-4">
+            <div class="history-header">
 
-            <div class="col-lg-6">
+                <h2>
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    Prediction History
+                </h2>
 
-                <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Search by Applicant Name...">
+                <p>
+                    View all your previous loan predictions.
+                </p>
 
             </div>
 
-        </div>
+            {% if predictions %}
 
+            <div class="table-responsive">
 
-        <!-- History Table -->
+                <table class="table table-hover align-middle">
 
-        <div class="table-responsive">
+                    <thead>
 
-            <table class="table table-hover align-middle">
+                        <tr>
 
-                <thead>
+                            <th>ID</th>
 
-                    <tr>
+                            <th>Date</th>
 
-                        <th>#</th>
+                            <th>Loan Amount</th>
 
-                        <th>Date</th>
+                            <th>Income</th>
 
-                        <th>Applicant</th>
+                            <th>CIBIL</th>
 
-                        <th>Loan Amount</th>
+                            <th>Result</th>
 
-                        <th>Status</th>
+                            <th>Risk</th>
 
-                        <th>Risk</th>
+                            <th>Status</th>
 
-                        <th>Action</th>
+                            <th>Action</th>
 
-                    </tr>
+                        </tr>
 
-                </thead>
+                    </thead>
 
-                <tbody>
+                    <tbody>
 
-                    {% for item in history %}
+                        {% for prediction in predictions %}
 
-                    <tr>
+                        <tr>
 
-                        <td data-label="#">
+                            <td>
 
-                            {{ forloop.counter }}
+                                #{{ prediction.id }}
 
-                        </td>
+                            </td>
 
-                        <td data-label="Date">
+                            <td>
 
-                            {{ item.created_at|date:"d M Y" }}
+                                {{ prediction.created_at|date:"d M Y" }}
 
-                        </td>
+                            </td>
 
-                        <td data-label="Applicant">
+                            <td>
 
-                            {{ item.full_name }}
+                                ₹{{ prediction.loan_amount }}
 
-                        </td>
+                            </td>
 
-                        <td data-label="Loan Amount">
+                            <td>
 
-                            ₹ {{ item.loan_amount }}
+                                ₹{{ prediction.income_annum }}
 
-                        </td>
+                            </td>
 
-                        <td data-label="Status">
+                            <td>
 
-                            {% if item.prediction == "Approved" %}
+                                {{ prediction.cibil_score }}
+
+                            </td>
+
+                            <td>
+
+                                {% if prediction.prediction_result == "Approved" %}
 
                                 <span class="badge bg-success">
 
@@ -128,7 +108,7 @@ Prediction History | NaNeVora
 
                                 </span>
 
-                            {% else %}
+                                {% else %}
 
                                 <span class="badge bg-danger">
 
@@ -136,62 +116,103 @@ Prediction History | NaNeVora
 
                                 </span>
 
-                            {% endif %}
+                                {% endif %}
 
-                        </td>
+                            </td>
 
-                        <td data-label="Risk">
+                            <td>
 
-                            <span class="badge bg-warning text-dark">
+                                {% if prediction.risk_level == "Low" %}
 
-                                {{ item.risk_level }}
+                                <span class="badge bg-success">
 
-                            </span>
+                                    Low
 
-                        </td>
+                                </span>
 
-                        <td data-label="Action">
+                                {% elif prediction.risk_level == "Medium" %}
 
-                            <a href="#"
-                               class="btn btn-sm btn-outline-primary">
+                                <span class="badge bg-warning text-dark">
 
-                                View
+                                    Medium
 
-                            </a>
+                                </span>
 
-                        </td>
+                                {% else %}
 
-                    </tr>
+                                <span class="badge bg-danger">
 
-                    {% empty %}
+                                    High
 
-                    <tr>
+                                </span>
 
-                        <td colspan="7" class="text-center py-5">
+                                {% endif %}
 
-                            <i class="fas fa-folder-open fa-3x mb-3 text-secondary"></i>
+                            </td>
 
-                            <h5>
+                            <td>
 
-                                No Prediction History Found
+                                <span class="badge bg-primary">
 
-                            </h5>
+                                    {{ prediction.status }}
 
-                            <p>
+                                </span>
 
-                                Your prediction records will appear here after making predictions.
+                            </td>
 
-                            </p>
+                            <td>
 
-                        </td>
+                                <a href="{% url 'result' prediction.id %}"
 
-                    </tr>
+                                   class="btn btn-sm btn-primary">
 
-                    {% endfor %}
+                                    <i class="fa-solid fa-eye"></i>
 
-                </tbody>
+                                    View
 
-            </table>
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            {% else %}
+
+            <div class="text-center py-5">
+
+                <i class="fa-solid fa-folder-open fa-4x mb-4 text-secondary"></i>
+
+                <h4>
+
+                    No Prediction Found
+
+                </h4>
+
+                <p>
+
+                    You haven't made any predictions yet.
+
+                </p>
+
+                <a href="{% url 'prediction' %}"
+
+                   class="btn btn-primary">
+
+                    Predict Now
+
+                </a>
+
+            </div>
+
+            {% endif %}
 
         </div>
 
