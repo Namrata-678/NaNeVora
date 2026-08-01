@@ -59,4 +59,15 @@ path(
     name="result"
 ),
 
+path(
+    "delete-prediction/<int:prediction_id>/",
+    views.delete_prediction,
+    name="delete_prediction",
+),
+path(
+    "download-report/<int:prediction_id>/",
+    views.download_report,
+    name="download_report"
+),
+
 ]

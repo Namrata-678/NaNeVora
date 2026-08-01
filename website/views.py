@@ -4,14 +4,22 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
-
+from django.db.models import Q
 from .models import Prediction, UserProfile
-from .forms import (
-    RegisterForm,
-    PredictionForm,
-    ProfileForm,
-    UserUpdateForm,
-)
+from .forms import (RegisterForm,PredictionForm,ProfileForm,UserUpdateForm,)
+from django.core.paginator import Paginator
+
+from django.http import HttpResponse
+
+from reportlab.platypus import SimpleDocTemplate
+from reportlab.platypus import Table
+from reportlab.platypus import TableStyle
+from reportlab.platypus import Paragraph
+from reportlab.lib import colors
+from reportlab.lib.styles import getSampleStyleSheet
+
+
+
 def home(request):
 
     return render(request, "index.html")
@@ -231,30 +239,82 @@ def prediction(request):
 # Prediction History
 # ==========================================================
 
+
 @login_required
 def history(request):
 
+    query = request.GET.get("search", "")
+
+    filter_by = request.GET.get("filter", "all")
+
     predictions = Prediction.objects.filter(
-
         user=request.user
-
-    ).order_by("-created_at")
-
-    return render(
-
-        request,
-
-        "history.html",
-
-        {
-
-            "predictions": predictions
-
-        }
-
     )
 
+    # Search
+    if query:
 
+        predictions = predictions.filter(
+
+            Q(id__icontains=query) |
+            Q(cibil_score__icontains=query) |
+            Q(prediction_result__icontains=query) |
+            Q(risk_level__icontains=query) |
+            Q(status__icontains=query) |
+            Q(loan_amount__icontains=query) |
+            Q(income_annum__icontains=query)
+
+        )
+
+    # Filters
+    if filter_by == "approved":
+
+        predictions = predictions.filter(
+            prediction_result="Approved"
+        )
+
+    elif filter_by == "rejected":
+
+        predictions = predictions.filter(
+            prediction_result="Rejected"
+        )
+
+    elif filter_by == "low":
+
+        predictions = predictions.filter(
+            risk_level="Low"
+        )
+
+    elif filter_by == "medium":
+
+        predictions = predictions.filter(
+            risk_level="Medium"
+        )
+
+    elif filter_by == "high":
+
+        predictions = predictions.filter(
+            risk_level="High"
+        )
+
+    predictions = predictions.order_by("-created_at")
+
+    # Pagination
+    paginator = Paginator(predictions, 10)
+
+    page_number = request.GET.get("page")
+
+    predictions = paginator.get_page(page_number)
+
+    return render(
+        request,
+        "history.html",
+        {
+            "predictions": predictions,
+            "query": query,
+            "filter": filter_by,
+        }
+    )
 # ==========================================================
 # Profile
 # ==========================================================
@@ -441,10 +501,157 @@ def edit_profile(request):
         }
 
     )
+@login_required
+def download_report(request, prediction_id):
 
-def download_report(request):
-    return render(request, "download_report.html")
+    prediction = get_object_or_404(
+        Prediction,
+        id=prediction_id,
+        user=request.user
+    )
 
+    response = HttpResponse(content_type="application/pdf")
+
+    response["Content-Disposition"] = (
+        f'attachment; filename="NaNeVora_Report_{prediction.id}.pdf"'
+    )
+
+    doc = SimpleDocTemplate(response)
+
+    styles = getSampleStyleSheet()
+
+    elements = []
+
+    # ==========================
+    # Heading
+    # ==========================
+
+    title = Paragraph(
+        "<b><font size=18 color='blue'>NaNeVora</font></b>",
+        styles["Title"]
+    )
+
+    subtitle = Paragraph(
+        "<b>AI Loan Prediction Report</b>",
+        styles["Heading2"]
+    )
+
+    elements.append(title)
+    elements.append(subtitle)
+    elements.append(Paragraph("<br/>", styles["Normal"]))
+
+    # ==========================
+    # Table Data
+    # ==========================
+
+    data = [
+
+        ["Field", "Value"],
+
+        ["Username", request.user.username],
+
+        ["Dependents", prediction.no_of_dependents],
+
+        ["Education", prediction.education],
+
+        ["Self Employed", prediction.self_employed],
+
+        ["Annual Income", f"₹ {prediction.income_annum:,}"],
+
+        ["Loan Amount", f"₹ {prediction.loan_amount:,}"],
+
+        ["Loan Term", prediction.loan_term],
+
+        ["CIBIL Score", prediction.cibil_score],
+
+        ["Residential Assets",
+         f"₹ {prediction.residential_assets_value:,}"],
+
+        ["Commercial Assets",
+         f"₹ {prediction.commercial_assets_value:,}"],
+
+        ["Luxury Assets",
+         f"₹ {prediction.luxury_assets_value:,}"],
+
+        ["Bank Assets",
+         f"₹ {prediction.bank_asset_value:,}"],
+
+        ["Loan Income Ratio",
+         f"{prediction.loan_income_ratio:.2f}"],
+
+        ["Asset Loan Ratio",
+         f"{prediction.asset_loan_ratio:.2f}"],
+
+        ["Prediction",
+         prediction.prediction_result],
+
+        ["Risk Level",
+         prediction.risk_level],
+
+        ["Confidence",
+         f"{prediction.prediction_probability}%"],
+
+        ["Status",
+         prediction.status],
+
+        ["Generated On",
+         prediction.created_at.strftime("%d-%m-%Y %I:%M %p")]
+
+    ]
+
+    # ==========================
+    # Create Table
+    # ==========================
+
+    table = Table(data, colWidths=[180, 250])
+
+    table.setStyle(
+
+        TableStyle([
+
+            ("BACKGROUND", (0, 0), (-1, 0), colors.darkblue),
+
+            ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
+
+            ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+
+            ("FONTSIZE", (0, 0), (-1, 0), 12),
+
+            ("BOTTOMPADDING", (0, 0), (-1, 0), 10),
+
+            ("GRID", (0, 0), (-1, -1), 1, colors.grey),
+
+            ("BACKGROUND", (0, 1), (-1, -1), colors.beige),
+
+            ("FONTNAME", (0, 1), (-1, -1), "Helvetica"),
+
+            ("FONTSIZE", (0, 1), (-1, -1), 10),
+
+            ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+
+            ("BOTTOMPADDING", (0, 1), (-1, -1), 8),
+
+        ])
+
+    )
+
+    elements.append(table)
+
+    elements.append(Paragraph("<br/><br/>", styles["Normal"]))
+
+    footer = Paragraph(
+
+        "<font size='10'>Generated by NaNeVora AI Loan Assessment Platform</font>",
+
+        styles["Normal"]
+
+    )
+
+    elements.append(footer)
+
+    doc.build(elements)
+
+    return response
 
 @login_required
 def update_profile(request):
@@ -478,3 +685,21 @@ def result(request, prediction_id):
             "prediction": prediction
         }
     )
+
+@login_required
+def delete_prediction(request, prediction_id):
+
+    prediction = get_object_or_404(
+        Prediction,
+        id=prediction_id,
+        user=request.user
+    )
+
+    prediction.delete()
+
+    messages.success(
+        request,
+        "Prediction deleted successfully."
+    )
+
+    return redirect("history")

@@ -332,11 +332,12 @@ Dashboard
 
 </a>
 
-<a href="{% url 'download_report' %}" class="btn btn-dark">
+<a href="{% url 'download_report' prediction.id %}"
+   class="btn btn-success">
 
-<i class="fa-solid fa-download"></i>
+    <i class="fa-solid fa-download"></i>
 
-Download Report
+    Download Report
 
 </a>
 
