@@ -1,9 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-
+from django.contrib.auth.forms import PasswordResetForm
 from .models import Prediction, UserProfile
-
+from django.contrib.auth.forms import SetPasswordForm
 
 # ==========================================================
 # Register Form
@@ -126,3 +126,44 @@ class EditProfileForm(forms.ModelForm):
             'email'
 
         ]
+
+class CustomPasswordResetForm(PasswordResetForm):
+
+    def __init__(self, *args, **kwargs):
+
+        super().__init__(*args, **kwargs)
+
+        self.fields["email"].widget.attrs.update({
+
+            "class": "form-control",
+
+            "placeholder": "Enter your registered email",
+
+            "autocomplete": "email",
+
+            "required": True,
+
+        })
+
+
+class CustomSetPasswordForm(SetPasswordForm):
+
+    def __init__(self, *args, **kwargs):
+
+        super().__init__(*args, **kwargs)
+
+        self.fields["new_password1"].widget.attrs.update({
+
+            "class": "form-control",
+
+            "placeholder": "Enter new password",
+
+        })
+
+        self.fields["new_password2"].widget.attrs.update({
+
+            "class": "form-control",
+
+            "placeholder": "Confirm new password",
+
+        })

@@ -1,5 +1,8 @@
 from django.urls import path
+from django.contrib.auth import views as auth_views
+from . import forms
 from . import views
+
 urlpatterns = [
 
     # ==========================
@@ -52,22 +55,57 @@ urlpatterns = [
     "update-profile/",
     views.update_profile,
     name="update_profile",
-),
-path(
+    ),
+    path(
     "result/<int:prediction_id>/",
     views.result,
     name="result"
-),
+    ),
 
-path(
+    path(
     "delete-prediction/<int:prediction_id>/",
     views.delete_prediction,
     name="delete_prediction",
-),
-path(
+    ),
+    path(
     "download-report/<int:prediction_id>/",
     views.download_report,
-    name="download_report"
+    name="download_prediction_report"
+    ),
+# ==========================
+# Forgot Password
+# ==========================
+
+path(
+    "forgot-password/",
+    auth_views.PasswordResetView.as_view(
+        template_name="forgot_password.html",
+        form_class=forms.CustomPasswordResetForm,
+    ),
+    name="forgot_password",
 ),
 
+path(
+    "forgot-password/done/",
+    auth_views.PasswordResetDoneView.as_view(
+        template_name="password_reset_done.html"
+    ),
+    name="password_reset_done",
+),
+
+path(
+    "reset/<uidb64>/<token>/",
+    auth_views.PasswordResetConfirmView.as_view(
+        template_name="password_reset_confirm.html"
+    ),
+    name="password_reset_confirm",
+),
+
+path(
+    "reset/done/",
+auth_views.PasswordResetConfirmView.as_view(
+    template_name="password_reset_confirm.html",
+    form_class=forms.CustomSetPasswordForm,
+)
+),
 ]

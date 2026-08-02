@@ -144,3 +144,7 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 # Reset timer after every request
 SESSION_SAVE_EVERY_REQUEST = True
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+DEFAULT_FROM_EMAIL = "noreply@nanevora.com"

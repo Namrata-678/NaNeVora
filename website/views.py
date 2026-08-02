@@ -732,3 +732,20 @@ def delete_prediction(request, prediction_id):
     )
 
     return redirect("history")
+
+
+def forgot_password(request):
+
+    if request.method == "POST":
+
+        email = request.POST.get("email")
+
+        messages.success(
+            request,
+            "If this email exists, a password reset link will be sent."
+        )
+
+    return render(
+        request,
+        "forgot_password.html"
+    )
