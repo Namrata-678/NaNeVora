@@ -393,3 +393,75 @@ body.dark-mode .table-hover tbody tr:hover{
     border-radius:8px;
 
 }
+
+/* ==========================================================
+   STATISTICS CARDS
+==========================================================*/
+
+.stats-card{
+
+    border:none;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.stats-card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.stats-card h6{
+
+    font-size:15px;
+
+    color:#6c757d;
+
+    margin-bottom:10px;
+
+}
+
+.stats-card h2{
+
+    font-weight:700;
+
+    margin:0;
+
+}
+
+.success{
+
+    border-top:5px solid #198754;
+
+}
+
+.danger{
+
+    border-top:5px solid #dc3545;
+
+}
+
+.low{
+
+    border-top:5px solid #20c997;
+
+}
+
+.medium{
+
+    border-top:5px solid #ffc107;
+
+}
+
+.high{
+
+    border-top:5px solid #fd7e14;
+
+}

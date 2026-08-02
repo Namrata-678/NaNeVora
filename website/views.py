@@ -307,14 +307,43 @@ def history(request):
     predictions = paginator.get_page(page_number)
 
     return render(
-        request,
-        "history.html",
-        {
-            "predictions": predictions,
-            "query": query,
-            "filter": filter_by,
-        }
-    )
+    request,
+    "history.html",
+    {
+        "predictions": predictions,
+        "query": query,
+        "filter": filter_by,
+
+        "total_predictions": Prediction.objects.filter(
+            user=request.user
+        ).count(),
+
+        "approved_count": Prediction.objects.filter(
+            user=request.user,
+            prediction_result="Approved"
+        ).count(),
+
+        "rejected_count": Prediction.objects.filter(
+            user=request.user,
+            prediction_result="Rejected"
+        ).count(),
+
+        "low_count": Prediction.objects.filter(
+            user=request.user,
+            risk_level="Low"
+        ).count(),
+
+        "medium_count": Prediction.objects.filter(
+            user=request.user,
+            risk_level="Medium"
+        ).count(),
+
+        "high_count": Prediction.objects.filter(
+            user=request.user,
+            risk_level="High"
+        ).count(),
+    }
+)
 # ==========================================================
 # Profile
 # ==========================================================
