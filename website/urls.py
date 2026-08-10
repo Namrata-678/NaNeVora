@@ -70,7 +70,7 @@ urlpatterns = [
     path(
     "download-report/<int:prediction_id>/",
     views.download_report,
-    name="download_prediction_report"
+    name="download_report"
     ),
 # ==========================
 # Forgot Password
