@@ -175,38 +175,39 @@
 
 /* ==========================================================
                 HERO IMAGE
-==========================================================*/
+========================================================== */
 
-.hero-image{
+.hero-image {
 
-    width:470px;
+    width: 460px;
 
-    max-width:100%;
+    max-width: 100%;
 
-    animation:floating 5s ease-in-out infinite;
+    height: auto;
 
-    filter:drop-shadow(0 30px 40px rgba(0,0,0,.18));
+    object-fit: contain;
+
+    animation: floating 5s ease-in-out infinite;
+
+    filter: drop-shadow(0 25px 35px rgba(0, 0, 0, .20));
 
 }
 
-@keyframes floating{
 
-    0%{
+/* Image floating animation */
 
-        transform:translateY(0);
+@keyframes floating {
 
+    0% {
+        transform: translateY(0);
     }
 
-    50%{
-
-        transform:translateY(-12px);
-
+    50% {
+        transform: translateY(-10px);
     }
 
-    100%{
-
-        transform:translateY(0);
-
+    100% {
+        transform: translateY(0);
     }
 
 }
@@ -633,13 +634,13 @@
                 MAP SECTION
 ==========================================================*/
 
-.map-section{
+.office-section{
 
     padding:90px 0;
 
 }
 
-.map-card{
+.office-card{
 
     background:#FFFFFF;
 
@@ -832,85 +833,186 @@
     box-shadow:0 20px 40px rgba(0,0,0,.15);
 
 }
+/* ==========================================================
+                DARK MODE - CONTACT PAGE
+========================================================== */
+
+/* Main page */
+body.dark-mode .contact-main,
+body.dark-mode .quick-contact,
+body.dark-mode .office-section {
+    background: #0f172a;
+}
+
+/* Quick Contact Cards */
+body.dark-mode .quick-card {
+    background: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .25);
+}
+
+body.dark-mode .quick-card h5 {
+    color: #f8fafc;
+}
+
+body.dark-mode .quick-card p {
+    color: #cbd5e1;
+}
+
+/* Contact Information Card */
+body.dark-mode .contact-info-card,
+body.dark-mode .contact-form-card {
+    background: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .25);
+}
+
+/* Headings */
+body.dark-mode .contact-info-card h2,
+body.dark-mode .contact-form-card h2 {
+    color: #f8fafc;
+}
+
+/* Description */
+body.dark-mode .contact-info-card > p {
+    color: #cbd5e1;
+}
+
+/* Contact item headings */
+body.dark-mode .info-item h6 {
+    color: #f1f5f9;
+}
+
+/* Contact item text */
+body.dark-mode .info-item p {
+    color: #cbd5e1;
+}
+
+/* LinkedIn */
+body.dark-mode .info-item a {
+    color: #60a5fa;
+}
+
+/* Badge */
+body.dark-mode .section-badge {
+    background: #263852;
+    color: #60a5fa;
+}
+
+/* Form labels */
+body.dark-mode .contact-form-card label {
+    color: #e2e8f0;
+}
+
+/* Form inputs */
+body.dark-mode .contact-form-card .form-control {
+    background: #0f172a;
+    border-color: #475569;
+    color: #f8fafc;
+}
+
+/* Input placeholder */
+body.dark-mode .contact-form-card .form-control::placeholder {
+    color: #94a3b8;
+}
+
+/* Input focus */
+body.dark-mode .contact-form-card .form-control:focus {
+    background: #111c30;
+    border-color: #3b82f6;
+    color: #ffffff;
+    box-shadow: 0 0 0 .25rem rgba(59, 130, 246, .18);
+}
+
+/* Office Section */
+body.dark-mode .office-section {
+    padding: 90px 0;
+}
+
+/* Office Card */
+body.dark-mode .office-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 28px;
+    padding: 40px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, .25);
+}
+
+/* Office Heading */
+body.dark-mode .office-card h2 {
+    color: #f8fafc;
+}
+
+/* Office paragraph */
+body.dark-mode .office-card p {
+    color: #cbd5e1;
+}
+
+/* Map Placeholder */
+body.dark-mode .map-placeholder {
+    background: #0f172a;
+    border-color: #475569;
+    color: #e2e8f0;
+}
+
+body.dark-mode .map-placeholder:hover {
+    background: #16233a;
+    border-color: #3b82f6;
+}
+
+body.dark-mode .map-placeholder h4 {
+    color: #f8fafc;
+}
+
+body.dark-mode .map-placeholder i {
+    color: #60a5fa;
+}
+
+/* CTA */
+body.dark-mode .cta-card {
+    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+}
 
 /* ==========================================================
-                DARK MODE
-==========================================================*/
+                CONTACT RESPONSIVE
+========================================================== */
 
-body.dark-mode .contact-info-card,
+@media (max-width: 991px) {
 
-body.dark-mode .contact-form-card,
+    .contact-hero {
+        padding: 100px 0 70px;
+    }
 
-body.dark-mode .map-card{
+    .contact-hero h1 {
+        font-size: 48px;
+    }
 
-    background:#1E293B;
-
-    border-color:#334155;
-
-}
-
-body.dark-mode .contact-info-card h2,
-
-body.dark-mode .contact-form-card h2,
-
-body.dark-mode .map-card h2,
-
-body.dark-mode .info-item h6{
-
-    color:#F8FAFC;
+    .hero-image {
+        width: 380px;
+        margin-top: 45px;
+    }
 
 }
 
-body.dark-mode .contact-info-card p,
 
-body.dark-mode .info-item p,
+@media (max-width: 576px) {
 
-body.dark-mode .map-placeholder p{
+    .contact-hero {
+        padding: 90px 0 60px;
+    }
 
-    color:#CBD5E1;
+    .contact-hero h1 {
+        font-size: 38px;
+    }
 
-}
+    .contact-hero p {
+        font-size: 16px;
+        line-height: 28px;
+    }
 
-body.dark-mode .contact-form-card label{
-
-    color:#E2E8F0;
-
-}
-
-body.dark-mode .contact-form-card .form-control{
-
-    background:#334155;
-
-    border-color:#475569;
-
-    color:#FFFFFF;
-
-}
-
-body.dark-mode .contact-form-card .form-control::placeholder{
-
-    color:#94A3B8;
-
-}
-
-body.dark-mode .map-placeholder{
-
-    background:#334155;
-
-    border-color:#475569;
-
-}
-
-body.dark-mode .map-placeholder:hover{
-
-    background:#3A4A61;
-
-}
-
-body.dark-mode .section-badge{
-
-    background:#334155;
-
-    color:#60A5FA;
+    .hero-image {
+        width: 300px;
+        margin-top: 35px;
+    }
 
 }
