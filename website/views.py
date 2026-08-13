@@ -8,7 +8,6 @@ from django.db.models import Q
 from .models import Prediction, UserProfile
 from .forms import (RegisterForm,PredictionForm,ProfileForm,UserUpdateForm,)
 from django.core.paginator import Paginator
-
 from django.http import HttpResponse
 
 from reportlab.platypus import SimpleDocTemplate
@@ -18,7 +17,7 @@ from reportlab.platypus import Paragraph
 from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet
 
-
+from ml_engine.predict import predict_loan
 
 def home(request):
 
@@ -145,6 +144,7 @@ def dashboard(request):
 # ==========================================================
 # Prediction
 # ==========================================================
+
 @login_required
 def prediction(request):
 
@@ -160,71 +160,168 @@ def prediction(request):
 
             prediction.user = request.user
 
-            # -----------------------------
+            # --------------------------------------------------
             # Feature Engineering
-            # -----------------------------
+            # --------------------------------------------------
 
-            prediction.loan_income_ratio = (
-                prediction.loan_amount /
-                prediction.income_annum
-            )
+            if prediction.income_annum != 0:
+
+                prediction.loan_income_ratio = (
+                    prediction.loan_amount /
+                    prediction.income_annum
+                )
+
+            else:
+
+                prediction.loan_income_ratio = 0
+
 
             total_assets = (
-
                 prediction.residential_assets_value +
-
                 prediction.commercial_assets_value +
-
                 prediction.luxury_assets_value +
-
                 prediction.bank_asset_value
-
             )
+
 
             prediction.asset_loan_ratio = (
                 total_assets /
                 prediction.loan_amount
+                if prediction.loan_amount != 0
+                else 0
             )
 
-            # ----------------------------------
-            # Temporary Prediction
-            # ----------------------------------
 
-            if prediction.cibil_score >= 700:
+            # --------------------------------------------------
+            # Prepare Data for ML Model
+            # --------------------------------------------------
 
-                prediction.prediction_result = "Approved"
-                prediction.prediction_probability = 92
-                prediction.risk_level = "Low"
+            ml_data = {
 
-            elif prediction.cibil_score >= 600:
+                "no_of_dependents":
+                    prediction.no_of_dependents,
 
-                prediction.prediction_result = "Approved"
-                prediction.prediction_probability = 75
-                prediction.risk_level = "Medium"
+                "education":
+                    prediction.education,
 
-            else:
+                "self_employed":
+                    prediction.self_employed,
 
-                prediction.prediction_result = "Rejected"
-                prediction.prediction_probability = 35
-                prediction.risk_level = "High"
+                "income_annum":
+                    prediction.income_annum,
 
-            prediction.status = "Completed"
+                "loan_amount":
+                    prediction.loan_amount,
 
-            prediction.save()
+                "loan_term":
+                    prediction.loan_term,
 
-            print("Prediction Saved:", prediction.id)
+                "cibil_score":
+                    prediction.cibil_score,
 
-            return redirect(
-                "result",
-                prediction.id
-            )
+                "residential_assets_value":
+                    prediction.residential_assets_value,
+
+                "commercial_assets_value":
+                    prediction.commercial_assets_value,
+
+                "luxury_assets_value":
+                    prediction.luxury_assets_value,
+
+                "bank_asset_value":
+                    prediction.bank_asset_value,
+            }
+
+
+            # --------------------------------------------------
+            # REAL ML PREDICTION
+            # --------------------------------------------------
+
+            try:
+
+                ml_result = predict_loan(ml_data)
+
+                print("ML RESULT:", ml_result)
+
+
+                # --------------------------------------------------
+                # Save ML Result
+                # --------------------------------------------------
+
+                prediction.prediction_result = (
+                    ml_result["prediction"]
+                )
+
+                prediction.prediction_probability = (
+                    ml_result["confidence"]
+                )
+
+
+                # --------------------------------------------------
+                # Risk Level
+                # --------------------------------------------------
+
+                confidence = ml_result["confidence"]
+
+                if prediction.prediction_result == "Approved":
+
+                    if confidence >= 85:
+                        prediction.risk_level = "Low"
+
+                    elif confidence >= 65:
+                        prediction.risk_level = "Medium"
+
+                    else:
+                        prediction.risk_level = "High"
+
+                else:
+
+                    prediction.risk_level = "High"
+
+
+                prediction.status = "Completed"
+
+                prediction.save()
+
+                print(
+                    "Prediction Saved:",
+                    prediction.id
+                )
+
+
+                # --------------------------------------------------
+                # Redirect to Result
+                # --------------------------------------------------
+
+                return redirect(
+                    "result",
+                    prediction.id
+                )
+
+
+            except Exception as e:
+
+                print(
+                    "ML PREDICTION ERROR:",
+                    str(e)
+                )
+
+                form.add_error(
+                    None,
+                    "Unable to process the prediction. "
+                    "Please try again."
+                )
+
 
         else:
+
+            print("FORM ERRORS:")
             print(form.errors)
 
     else:
 
         form = PredictionForm()
+
 
     return render(
         request,
@@ -233,8 +330,6 @@ def prediction(request):
             "form": form
         }
     )
-
-
 # ==========================================================
 # Prediction History
 # ==========================================================
