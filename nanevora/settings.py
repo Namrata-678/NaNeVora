@@ -39,6 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+        # Django Allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    # Google
+    'allauth.socialaccount.providers.google',
+
+    # LinkedIn through OpenID Connect
+    'allauth.socialaccount.providers.openid_connect',
+
 ]
 
 MIDDLEWARE = [
@@ -48,6 +60,9 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+
+    'allauth.account.middleware.AccountMiddleware',
+
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -136,8 +151,8 @@ LOGOUT_REDIRECT_URL = 'home'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Session expires after 5 minutes
-SESSION_COOKIE_AGE = 300
+# Session expires after 1 hour
+SESSION_COOKIE_AGE = 3600
 
 # Expire session if browser closes
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -148,3 +163,34 @@ SESSION_SAVE_EVERY_REQUEST = True
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 DEFAULT_FROM_EMAIL = "noreply@nanevora.com"
+
+SOCIALACCOUNT_PROVIDERS = {
+
+    "google": {
+        "APPS": [
+            {
+                "client_id": "YOUR_GOOGLE_CLIENT_ID",
+                "secret": "YOUR_GOOGLE_CLIENT_SECRET",
+                "key": "",
+            }
+        ],
+        "SCOPE": [
+            "profile",
+            "email",
+        ],
+    },
+
+    "openid_connect": {
+        "APPS": [
+            {
+                "provider_id": "linkedin",
+                "name": "LinkedIn",
+                "client_id": "YOUR_LINKEDIN_CLIENT_ID",
+                "secret": "YOUR_LINKEDIN_CLIENT_SECRET",
+                "settings": {
+                    "server_url": "https://www.linkedin.com/oauth",
+                },
+            }
+        ]
+    },
+}

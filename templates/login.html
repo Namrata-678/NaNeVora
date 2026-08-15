@@ -153,34 +153,27 @@ Login | NaNeVora
                     </div>
 
                 </div>
+<!-- Remember Me / Forgot Password -->
 
-                <!-- Remember -->
+<div class="remember-box">
 
-                <div class="remember-box">
+    <div>
 
-                    <div>
+        <input
+            type="checkbox"
+            id="remember">
 
-                        <input
+        <label for="remember">
+            Remember Me
+        </label>
 
-                            type="checkbox"
+    </div>
 
-                            id="remember">
+    <a href="{% url 'forgot_password' %}" class="forgot-password">
+        Forgot Password?
+    </a>
 
-                        <label for="remember">
-
-                            Remember Me
-
-                        </label>
-
-                    </div>
-
-                    <a href="{% url 'forgot_password' %}"></a>
-
-                        Forgot Password?
-
-                    </a>
-
-                </div>
+</div>
                                 <!-- Secure Login Button -->
 
                 <button

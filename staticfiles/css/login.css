@@ -1,0 +1,595 @@
+/*=========================================================
+                NaNeVora Premium Login
+=========================================================*/
+
+.login-page{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:80px 15px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:linear-gradient(135deg,#EAF3FF,#FFFFFF);
+
+}
+
+/*=========================
+      Background
+=========================*/
+
+.bg-circle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(40px);
+
+    animation:float 8s ease-in-out infinite;
+
+}
+
+.circle1{
+
+    width:280px;
+
+    height:280px;
+
+    background:#4F8DFF55;
+
+    top:-80px;
+
+    left:-80px;
+
+}
+
+.circle2{
+
+    width:220px;
+
+    height:220px;
+
+    background:#5C7CFA55;
+
+    bottom:-60px;
+
+    right:-60px;
+
+    animation-delay:2s;
+
+}
+
+.circle3{
+
+    width:180px;
+
+    height:180px;
+
+    background:#3B82F655;
+
+    top:40%;
+
+    right:8%;
+
+    animation-delay:4s;
+
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-20px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+
+/*=========================
+      Login Card
+=========================*/
+
+.login-card{
+
+    max-width:500px;
+
+    margin:auto;
+
+    padding:45px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.78);
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:0 20px 60px rgba(0,0,0,.12);
+
+    border:1px solid rgba(255,255,255,.4);
+
+    position:relative;
+
+    z-index:10;
+
+}
+
+/*=========================
+      Logo
+=========================*/
+
+.login-logo{
+
+    width:95px;
+
+    margin-bottom:20px;
+
+    transition:.4s;
+
+}
+
+.login-logo:hover{
+
+    transform:rotate(-6deg) scale(1.08);
+
+}
+
+.login-card h1{
+
+    color:#0F172A;
+
+    font-size:34px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.subtitle{
+
+    color:#64748B;
+
+    font-size:16px;
+
+    margin-bottom:35px;
+
+}
+
+/*=========================
+      Form
+=========================*/
+
+.input-box{
+
+    margin-bottom:20px;
+
+}
+
+.input-box label{
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+    display:block;
+
+    color:#334155;
+
+}
+
+.input-group{
+
+    border-radius:14px;
+
+    overflow:hidden;
+
+}
+
+.input-group-text{
+
+    background:#F1F5F9;
+
+    border:none;
+
+    color:#2563EB;
+
+}
+
+.form-control{
+
+    border:none;
+
+    background:#F8FAFC;
+
+    height:55px;
+
+    font-size:15px;
+
+}
+
+.form-control:focus{
+
+    background:#FFFFFF;
+
+    box-shadow:none;
+
+}
+
+.input-group .btn{
+
+    border:none;
+
+    background:#F1F5F9;
+
+}
+
+/*=========================
+      Remember
+=========================*/
+
+.remember-box{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:20px 0 28px;
+
+    font-size:14px;
+
+}
+
+.remember-box a{
+
+    text-decoration:none;
+
+    color:#2563EB;
+
+    font-weight:500;
+
+}
+
+/*=========================
+      Login Button
+=========================*/
+
+.login-btn{
+
+    height:55px;
+
+    border-radius:14px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    background:linear-gradient(90deg,#2563EB,#3B82F6);
+
+    border:none;
+
+    transition:.35s;
+
+}
+
+.login-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 12px 30px rgba(37,99,235,.35);
+
+}
+
+/*=========================
+      Divider
+=========================*/
+
+.divider{
+
+    display:flex;
+
+    align-items:center;
+
+    text-align:center;
+
+    margin:28px 0;
+
+}
+
+.divider::before,
+
+.divider::after{
+
+    content:"";
+
+    flex:1;
+
+    height:1px;
+
+    background:#D1D5DB;
+
+}
+
+.divider span{
+
+    padding:0 15px;
+
+    color:#64748B;
+
+    font-size:14px;
+
+}
+
+/*=========================
+      Social Buttons
+=========================*/
+
+.social-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    height:54px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    margin-bottom:15px;
+
+    transition:.3s;
+
+}
+
+.google-btn{
+
+    border:1px solid #EA4335;
+
+    color:#EA4335;
+
+    background:#FFFFFF;
+
+}
+
+.google-btn:hover{
+
+    background:#EA4335;
+
+    color:#FFFFFF;
+
+}
+
+.linkedin-btn{
+
+    border:1px solid #0077B5;
+
+    color:#0077B5;
+
+    background:#FFFFFF;
+
+}
+
+.linkedin-btn:hover{
+
+    background:#0077B5;
+
+    color:#FFFFFF;
+
+}
+
+/*=========================
+      Security
+=========================*/
+
+.security-box{
+
+    text-align:center;
+
+    margin-top:28px;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    background:#EFF6FF;
+
+    color:#2563EB;
+
+    font-size:14px;
+
+    font-weight:500;
+
+}
+
+.security-box i{
+
+    margin-right:8px;
+
+}
+
+/*=========================
+      Register
+=========================*/
+
+.register-text{
+
+    text-align:center;
+
+    margin-top:25px;
+
+    color:#475569;
+
+}
+
+.register-text a{
+
+    text-decoration:none;
+
+    color:#2563EB;
+
+    font-weight:600;
+
+}
+
+/*=========================
+      Dark Mode
+=========================*/
+
+body.dark-mode .login-page{
+
+    background:linear-gradient(135deg,#0F172A,#1E293B);
+
+}
+
+body.dark-mode .login-card{
+
+    background:rgba(30,41,59,.88);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+body.dark-mode .login-card h1{
+
+    color:#FFFFFF;
+
+}
+
+body.dark-mode .subtitle{
+
+    color:#CBD5E1;
+
+}
+
+body.dark-mode label{
+
+    color:#E2E8F0;
+
+}
+
+body.dark-mode .form-control{
+
+    background:#334155;
+
+    color:#FFFFFF;
+
+}
+
+body.dark-mode .form-control::placeholder{
+
+    color:#CBD5E1;
+
+}
+
+body.dark-mode .input-group-text,
+
+body.dark-mode .input-group .btn{
+
+    background:#475569;
+
+    color:#FFFFFF;
+
+}
+
+body.dark-mode .remember-box{
+
+    color:#E2E8F0;
+
+}
+
+body.dark-mode .divider span{
+
+    color:#CBD5E1;
+
+}
+
+body.dark-mode .security-box{
+
+    background:#1E3A8A;
+
+    color:#FFFFFF;
+
+}
+
+body.dark-mode .google-btn,
+
+body.dark-mode .linkedin-btn{
+
+    background:#334155;
+
+}
+
+/*=========================
+      Responsive
+=========================*/
+
+@media(max-width:768px){
+
+.login-card{
+
+    padding:30px;
+
+}
+
+.login-card h1{
+
+    font-size:28px;
+
+}
+
+.login-logo{
+
+    width:75px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.login-card{
+
+    padding:25px;
+
+}
+
+.remember-box{
+
+    flex-direction:column;
+
+    gap:12px;
+
+    align-items:flex-start;
+
+}
+
+}

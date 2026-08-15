@@ -263,22 +263,21 @@ def prediction(request):
 
                 confidence = ml_result["confidence"]
 
-                if prediction.prediction_result == "Approved":
+# --------------------------------------------------
+# Risk Level based on CIBIL Score
+# --------------------------------------------------
 
-                    if confidence >= 85:
-                        prediction.risk_level = "Low"
+                if prediction.cibil_score >= 700:
 
-                    elif confidence >= 65:
-                        prediction.risk_level = "Medium"
+                    prediction.risk_level = "Low"
 
-                    else:
-                        prediction.risk_level = "High"
+                elif prediction.cibil_score >= 600:
+
+                    prediction.risk_level = "Medium"
 
                 else:
 
                     prediction.risk_level = "High"
-
-
                 prediction.status = "Completed"
 
                 prediction.save()

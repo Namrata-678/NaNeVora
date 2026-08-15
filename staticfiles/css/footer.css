@@ -1,0 +1,398 @@
+/* ==========================================================
+   NaNeVora
+   Footer CSS
+==========================================================*/
+
+/* ===========================
+   Footer
+=========================== */
+
+.footer{
+
+    background:#0F213E;
+    color:#ffffff;
+    padding:70px 0 25px;
+    margin-top:80px;
+
+}
+
+/* ===========================
+   Grid Alignment
+=========================== */
+
+.footer .row{
+
+    align-items:flex-start;
+
+}
+
+/* ===========================
+   Brand
+=========================== */
+
+.footer-brand{
+
+    display:flex;
+    align-items:center;
+    margin-bottom:25px;
+
+}
+
+.footer-logo{
+
+    width:60px;
+    height:60px;
+    object-fit:contain;
+
+}
+
+.footer h4,
+.footer h5{
+
+    color:#ffffff;
+    font-weight:700;
+
+}
+
+.footer h5{
+
+    margin-bottom:22px;
+    font-size:22px;
+
+}
+
+.footer p{
+
+    color:#D4D8E2;
+    line-height:1.8;
+    font-size:15px;
+
+}
+
+/* ===========================
+   Links
+=========================== */
+
+.footer-links{
+
+    list-style:none;
+    padding:0;
+    margin:0;
+
+}
+
+.footer-links li{
+
+    margin-bottom:14px;
+
+}
+
+.footer-links a{
+
+    color:#D4D8E2;
+    text-decoration:none;
+    transition:.3s;
+
+}
+
+.footer-links a:hover{
+
+    color:#3B82F6;
+    padding-left:8px;
+
+}
+
+/* ===========================
+   Send Message Button
+=========================== */
+
+.send-message-btn{
+
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    padding:10px 18px;
+
+    border-radius:10px;
+
+    background:#2563EB;
+
+    color:#ffffff;
+
+    text-decoration:none;
+
+    font-weight:500;
+
+    transition:.3s;
+
+}
+
+.send-message-btn:hover{
+
+    background:#1D4ED8;
+
+    color:#ffffff;
+
+    transform:translateY(-3px);
+
+}
+
+/* ===========================
+   Project Team
+=========================== */
+
+.team-member{
+
+    margin-bottom:22px;
+
+}
+
+.team-member h6{
+
+    color:#ffffff;
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:10px;
+
+}
+
+.team-member p{
+
+    margin-bottom:8px;
+    color:#CBD5E1;
+    font-size:15px;
+
+}
+
+.team-member i{
+
+    width:22px;
+    color:#3B82F6;
+
+}
+
+/* ===========================
+   Social Icons
+=========================== */
+
+.social-icons{
+
+    display:flex;
+    gap:15px;
+    margin-top:25px;
+
+}
+
+.social-icons a{
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(255,255,255,.08);
+
+    color:#ffffff;
+
+    font-size:18px;
+
+    text-decoration:none;
+
+    transition:.35s;
+
+}
+
+.social-icons a:hover{
+
+    background:#2563EB;
+
+    transform:translateY(-5px);
+
+}
+
+/* ===========================
+   Divider
+=========================== */
+
+.footer hr{
+
+    border-color:rgba(255,255,255,.15);
+    margin:40px 0;
+
+}
+
+/* ===========================
+   Bottom Footer
+=========================== */
+
+.footer-bottom{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+
+}
+
+.footer-bottom p{
+
+    margin:0;
+    color:#CBD5E1;
+
+}
+
+.footer-bottom a{
+
+    color:#CBD5E1;
+    text-decoration:none;
+    transition:.3s;
+
+}
+
+.footer-bottom a:hover{
+
+    color:#3B82F6;
+
+}
+
+/* ===========================
+   Back To Top
+=========================== */
+
+.back-to-top{
+
+    position:fixed;
+
+    bottom:25px;
+    right:25px;
+
+    width:50px;
+    height:50px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#2563EB;
+
+    color:#ffffff;
+
+    font-size:18px;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    z-index:999;
+
+}
+
+.back-to-top:hover{
+
+    background:#1D4ED8;
+
+    transform:translateY(-5px);
+
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media(max-width:991px){
+
+    .footer{
+
+        text-align:center;
+
+    }
+
+    .footer-brand{
+
+        justify-content:center;
+
+    }
+
+    .social-icons{
+
+        justify-content:center;
+
+    }
+
+    .footer-bottom{
+
+        flex-direction:column;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .footer{
+
+        padding:60px 0 20px;
+
+    }
+
+    .footer h5{
+
+        margin-top:25px;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .footer-logo{
+
+        width:52px;
+        height:52px;
+
+    }
+
+    .footer h4{
+
+        font-size:26px;
+
+    }
+
+}
+
+.team-social{
+    display:flex;
+    gap:12px;
+    margin-top:15px;
+}
+
+.social-icon{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#22365f;
+    color:#fff;
+    text-decoration:none;
+    font-size:20px;
+    transition:.3s ease;
+}
+
+.social-icon:hover{
+    background:#2563eb;
+    color:#fff;
+    transform:translateY(-3px);
+}
