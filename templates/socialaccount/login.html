@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Google Sign In | NaNeVora
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/social_login.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="social-login-page">
+
+    <div class="social-login-card">
+
+        <!-- Google Icon -->
+        <div class="google-icon">
+            <i class="fa-brands fa-google"></i>
+        </div>
+
+        <!-- Heading -->
+        <h1>Sign In Via Google</h1>
+
+        <p class="social-subtitle">
+            Continue securely with your Google account
+        </p>
+
+        <!-- Account information -->
+        <div class="account-info">
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <div>
+                <strong>Secure Authentication</strong>
+                <p>
+                    NaNeVora uses Google to securely verify your identity.
+                </p>
+            </div>
+        </div>
+
+        <!-- Confirmation message -->
+        <p class="confirmation-text">
+            You are about to sign in using your
+            <strong>Google account</strong>.
+        </p>
+
+        <!-- Continue Form -->
+        <form method="post" action="{{ action_url }}">
+
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            {% if redirect_field_value %}
+                <input
+                    type="hidden"
+                    name="{{ redirect_field_name }}"
+                    value="{{ redirect_field_value }}"
+                >
+            {% endif %}
+
+            <button type="submit" class="continue-btn">
+                <i class="fa-brands fa-google"></i>
+                Continue with Google
+            </button>
+
+        </form>
+
+        <!-- Cancel -->
+        <a href="{% url 'login' %}" class="cancel-link">
+            ← Back to Login
+        </a>
+
+        <!-- Footer message -->
+        <div class="secure-message">
+            <i class="fa-solid fa-lock"></i>
+            Secure connection
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

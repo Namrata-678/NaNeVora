@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load socialaccount %}
 
 {% block title %}
 Register | NaNeVora
@@ -422,27 +423,31 @@ Register | NaNeVora
 <!-- Google -->
 <!-- ===================================== -->
 
-<a href="#"
-   class="btn google-btn w-100 mb-3">
+<a href="{% provider_login_url 'google' %}"
+   class="social-btn google-btn">
 
-    <i class="fab fa-google me-2"></i>
-
-    Continue with Google
+    <i class="fa-brands fa-google"></i>
+      Continue with Google
 
 </a>
 
 <!-- ===================================== -->
 <!-- LinkedIn -->
 <!-- ===================================== -->
+<!-- LinkedIn - Coming Soon -->
+<div class="linkedin-coming-soon">
+    <div class="linkedin-content">
+        <i class="fa-brands fa-linkedin-in linkedin-icon"></i>
 
-<a href="#"
-   class="btn linkedin-btn w-100">
+        <span class="linkedin-text">
+            Continue with LinkedIn
+        </span>
+    </div>
 
-    <i class="fab fa-linkedin me-2"></i>
-
-    Continue with LinkedIn
-
-</a>
+    <span class="coming-soon-badge">
+        Coming Soon
+    </span>
+</div>
 
 <!-- ===================================== -->
 <!-- Login Link -->

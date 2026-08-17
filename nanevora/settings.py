@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +22,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-y5sh643-p^6+e%0+d$%33(g08u1+3dr^wot3nwh9(@gk^6+fim'
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY",
+    "django-insecure-local-development-key"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "localhost",
+]
 
 
 # Application definition
@@ -55,7 +63,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -90,10 +98,9 @@ WSGI_APPLICATION = 'nanevora.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    "default": dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
+    )
 }
 
 
@@ -139,6 +146,14 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 MEDIA_URL = 'media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -165,32 +180,27 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 DEFAULT_FROM_EMAIL = "noreply@nanevora.com"
 
 SOCIALACCOUNT_PROVIDERS = {
-
     "google": {
         "APPS": [
             {
-                "client_id": "YOUR_GOOGLE_CLIENT_ID",
-                "secret": "YOUR_GOOGLE_CLIENT_SECRET",
+                "client_id": "Y982789584844-uaop9lpgltfde71l5euutd8c16g16uth.apps.googleusercontent.com",
+                "secret": "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",
                 "key": "",
             }
         ],
         "SCOPE": [
             "profile",
             "email",
+            "openid",
         ],
-    },
-
-    "openid_connect": {
-        "APPS": [
-            {
-                "provider_id": "linkedin",
-                "name": "LinkedIn",
-                "client_id": "YOUR_LINKEDIN_CLIENT_ID",
-                "secret": "YOUR_LINKEDIN_CLIENT_SECRET",
-                "settings": {
-                    "server_url": "https://www.linkedin.com/oauth",
-                },
-            }
-        ]
-    },
+        "AUTH_PARAMS": {
+            "access_type": "online",
+        },
+    }
 }
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+

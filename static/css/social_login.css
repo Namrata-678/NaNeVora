@@ -1,0 +1,390 @@
+/* =========================================
+   NaNeVora - Social Login Confirmation
+========================================= */
+
+.social-login-page {
+    min-height: calc(100vh - 80px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 50px 20px;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(37, 99, 235, 0.12),
+            transparent 35%
+        ),
+        #f4f7fb;
+}
+
+
+/* =========================================
+   Card
+========================================= */
+
+.social-login-card {
+    width: 100%;
+    max-width: 500px;
+
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    padding: 45px 42px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 50px rgba(15, 23, 42, 0.12);
+
+    border: 1px solid rgba(37, 99, 235, 0.08);
+
+    animation: socialCardEntry 0.5s ease;
+}
+
+
+/* =========================================
+   Google Icon
+========================================= */
+
+.google-icon {
+    width: 72px;
+    height: 72px;
+
+    margin: 0 auto 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.10);
+
+    font-size: 32px;
+
+    color: #4285f4;
+}
+
+
+/* =========================================
+   Heading
+========================================= */
+
+.social-login-card h1 {
+    margin: 0;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    color: #0f2a5f;
+}
+
+
+.social-subtitle {
+    margin: 10px 0 28px;
+
+    color: #64748b;
+
+    font-size: 15px;
+}
+
+
+/* =========================================
+   Secure Information Box
+========================================= */
+
+.account-info {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 14px;
+
+    text-align: left;
+
+    padding: 16px;
+
+    margin-bottom: 25px;
+
+    border-radius: 14px;
+
+    background: #eff6ff;
+
+    border: 1px solid #dbeafe;
+}
+
+
+.account-info > i {
+    font-size: 21px;
+
+    color: #2563eb;
+
+    margin-top: 2px;
+}
+
+
+.account-info strong {
+    display: block;
+
+    color: #173b78;
+
+    font-size: 14px;
+
+    margin-bottom: 4px;
+}
+
+
+.account-info p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   Confirmation Text
+========================================= */
+
+.confirmation-text {
+    color: #475569;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+    margin-bottom: 28px;
+}
+
+
+.confirmation-text strong {
+    color: #0f2a5f;
+}
+
+
+/* =========================================
+   Continue Button
+========================================= */
+
+.continue-btn {
+    width: 100%;
+
+    padding: 15px 20px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #1746b5
+    );
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+
+    box-shadow:
+        0 10px 22px rgba(37, 99, 235, 0.25);
+}
+
+
+.continue-btn i {
+    margin-right: 9px;
+
+    font-size: 17px;
+}
+
+
+.continue-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 28px rgba(37, 99, 235, 0.32);
+}
+
+
+/* =========================================
+   Back to Login
+========================================= */
+
+.cancel-link {
+    display: inline-block;
+
+    margin-top: 22px;
+
+    color: #2563eb;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+
+.cancel-link:hover {
+    color: #1746b5;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   Secure Message
+========================================= */
+
+.secure-message {
+    margin-top: 28px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #e2e8f0;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+.secure-message i {
+    margin-right: 5px;
+
+    color: #16a34a;
+}
+
+
+/* =========================================
+   Animation
+========================================= */
+
+@keyframes socialCardEntry {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   Dark Mode
+========================================= */
+
+body.dark-mode .social-login-page {
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(37, 99, 235, 0.16),
+            transparent 35%
+        ),
+        #0f172a;
+}
+
+
+body.dark-mode .social-login-card {
+    background: #172033;
+
+    border-color: rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+
+body.dark-mode .social-login-card h1 {
+    color: #e8f0ff;
+}
+
+
+body.dark-mode .social-subtitle {
+    color: #a8b4c7;
+}
+
+
+body.dark-mode .account-info {
+    background: #172b4d;
+
+    border-color: #244575;
+}
+
+
+body.dark-mode .account-info strong {
+    color: #dbeafe;
+}
+
+
+body.dark-mode .account-info p {
+    color: #a8b4c7;
+}
+
+
+body.dark-mode .confirmation-text {
+    color: #cbd5e1;
+}
+
+
+body.dark-mode .confirmation-text strong {
+    color: #ffffff;
+}
+
+
+body.dark-mode .secure-message {
+    border-color: #334155;
+
+    color: #94a3b8;
+}
+
+
+/* =========================================
+   Responsive
+========================================= */
+
+@media (max-width: 576px) {
+
+    .social-login-page {
+        padding: 30px 15px;
+    }
+
+    .social-login-card {
+        padding: 35px 24px;
+
+        border-radius: 18px;
+    }
+
+    .social-login-card h1 {
+        font-size: 25px;
+    }
+
+}

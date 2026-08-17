@@ -1672,7 +1672,159 @@ img{
     min-width:55px;
 
 }
+/* =========================================
+   LinkedIn - Coming Soon
+========================================= */
 
+.linkedin-coming-soon {
+    width: 100%;
+    min-height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 20px;
+
+    margin-top: 16px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #d7e2f0;
+    border-radius: 14px;
+
+    background: #f8fafc;
+
+    color: #0a66c2;
+
+    cursor: default;
+
+    transition: all 0.25s ease;
+}
+
+
+/* Left side */
+
+.linkedin-content {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+
+/* LinkedIn icon */
+
+.linkedin-icon {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
+
+    background: #0a66c2;
+
+    color: #ffffff;
+
+    font-size: 15px;
+}
+
+
+/* Text */
+
+.linkedin-text {
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: #145da0;
+}
+
+
+/* Coming Soon badge */
+
+.coming-soon-badge {
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    background: #e8f1fb;
+
+    color: #0a66c2;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+
+    white-space: nowrap;
+}
+
+
+/* Subtle hover */
+
+.linkedin-coming-soon:hover {
+    border-color: #b8cce3;
+
+    background: #f1f6fc;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   Dark Mode
+========================================= */
+
+body.dark-mode .linkedin-coming-soon {
+    background: #172033;
+
+    border-color: #2d405d;
+}
+
+
+body.dark-mode .linkedin-text {
+    color: #60a5fa;
+}
+
+
+body.dark-mode .coming-soon-badge {
+    background: #1e3a5f;
+
+    color: #60a5fa;
+}
+
+
+body.dark-mode .linkedin-coming-soon:hover {
+    background: #1c2940;
+
+    border-color: #3b5275;
+}
+
+
+/* =========================================
+   Mobile
+========================================= */
+
+@media (max-width: 480px) {
+
+    .linkedin-coming-soon {
+        padding: 0 14px;
+    }
+
+    .linkedin-text {
+        font-size: 14px;
+    }
+
+    .coming-soon-badge {
+        font-size: 10px;
+
+        padding: 4px 8px;
+    }
+}
 /* ==========================================================
    END OF FILE
 ==========================================================*/
