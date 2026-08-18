@@ -30,10 +30,10 @@ SECRET_KEY = os.environ.get(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "localhost",
-]
+ALLOWED_HOSTS = os.environ.get(
+    "ALLOWED_HOSTS",
+    "127.0.0.1,localhost"
+).split(",")
 
 
 # Application definition
@@ -63,14 +63,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',    'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-
     'allauth.account.middleware.AccountMiddleware',
-
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -99,7 +98,7 @@ WSGI_APPLICATION = 'nanevora.wsgi.application'
 
 DATABASES = {
     "default": dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
+        default=os.environ.get("DATABASE_URL")
     )
 }
 
@@ -183,8 +182,8 @@ SOCIALACCOUNT_PROVIDERS = {
     "google": {
         "APPS": [
             {
-                "client_id": "Y982789584844-uaop9lpgltfde71l5euutd8c16g16uth.apps.googleusercontent.com",
-                "secret": "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",
+                "client_id": os.environ.get("GOOGLE_CLIENT_ID", ""),
+                "secret": os.environ.get("GOOGLE_CLIENT_SECRET", ""),
                 "key": "",
             }
         ],
