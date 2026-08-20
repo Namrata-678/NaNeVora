@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
         # Django Allauth
     'allauth',
@@ -71,7 +72,7 @@ INSTALLED_APPS = [
 
     # LinkedIn through OpenID Connect
     'allauth.socialaccount.providers.openid_connect',
-
+    
 ]
 
 MIDDLEWARE = [
@@ -187,6 +188,8 @@ LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'home'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SITE_ID = 1
 
 # Session expires after 1 hour
 SESSION_COOKIE_AGE = 3600
