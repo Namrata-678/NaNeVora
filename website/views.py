@@ -9,7 +9,7 @@ from .models import Prediction, UserProfile
 from .forms import (RegisterForm,PredictionForm,ProfileForm,UserUpdateForm,)
 from django.core.paginator import Paginator
 from django.http import HttpResponse
-
+from .models import UserProfile
 from reportlab.platypus import SimpleDocTemplate
 from reportlab.platypus import Table
 from reportlab.platypus import TableStyle
@@ -106,9 +106,50 @@ def logout_view(request):
     )
 
     return redirect("home")
-
 @login_required
 def dashboard(request):
+
+    # Handle the Edit Profile form
+    if request.method == "POST":
+
+        username = request.POST.get(
+            "username", ""
+        ).strip()
+
+        email = request.POST.get(
+            "email", ""
+        ).strip()
+
+        # Check that username is not empty
+        if not username:
+            messages.error(
+                request,
+                "Username cannot be empty."
+            )
+
+        # Check whether another user already has this username
+        elif User.objects.filter(
+            username=username
+        ).exclude(
+            pk=request.user.pk
+        ).exists():
+
+            messages.error(
+                request,
+                "This username is already taken. Please choose another."
+            )
+
+        else:
+            request.user.username = username
+            request.user.email = email
+            request.user.save()
+
+            messages.success(
+                request,
+                "Profile updated successfully."
+            )
+
+            return redirect("dashboard")
 
     # All predictions for statistics
     all_predictions = Prediction.objects.filter(
@@ -121,19 +162,14 @@ def dashboard(request):
     )[:5]
 
     context = {
-
         "predictions": predictions,
-
         "total_predictions": all_predictions.count(),
-
         "approved_count": all_predictions.filter(
             prediction_result="Approved"
         ).count(),
-
         "rejected_count": all_predictions.filter(
             prediction_result="Rejected"
         ).count(),
-
     }
 
     return render(
@@ -445,68 +481,56 @@ def history(request):
 @login_required
 def profile(request):
 
-    profile = request.user.userprofile
+    # Get the user's profile, or create one if it doesn't exist
+    profile, created = UserProfile.objects.get_or_create(
+        user=request.user
+    )
 
     if request.method == "POST":
 
         user_form = UserUpdateForm(
-
             request.POST,
-
             instance=request.user
-
         )
 
         profile_form = ProfileForm(
-
             request.POST,
-
             request.FILES,
-
             instance=profile
-
         )
 
         if user_form.is_valid() and profile_form.is_valid():
 
             user_form.save()
-
             profile_form.save()
 
             messages.success(
-
                 request,
-
                 "Profile updated successfully."
-
             )
 
             return redirect("profile")
 
     else:
 
-        user_form = UserUpdateForm(instance=request.user)
+        user_form = UserUpdateForm(
+            instance=request.user
+        )
 
-        profile_form = ProfileForm(instance=profile)
+        profile_form = ProfileForm(
+            instance=profile
+        )
 
     context = {
-
         "user_form": user_form,
-
         "profile_form": profile_form
-
     }
 
     return render(
-
         request,
-
         "profile.html",
-
         context
-
     )
-
 
 # ==========================================================
 # Change Password
@@ -775,7 +799,6 @@ def download_report(request, prediction_id):
     doc.build(elements)
 
     return response
-
 @login_required
 def update_profile(request):
 
@@ -783,13 +806,44 @@ def update_profile(request):
 
         user = request.user
 
-        user.first_name = request.POST.get("first_name")
-        user.last_name = request.POST.get("last_name")
-        user.email = request.POST.get("email")
+        # Get submitted form values
+        username = request.POST.get("username", "").strip()
+        first_name = request.POST.get("first_name", "").strip()
+        last_name = request.POST.get("last_name", "").strip()
+        email = request.POST.get("email", "").strip()
 
-        user.save()
+        # Check if username is empty
+        if not username:
+            messages.error(
+                request,
+                "Username cannot be empty."
+            )
 
-        messages.success(request, "Profile updated successfully.")
+        # Check if another user already has this username
+        elif User.objects.filter(
+            username=username
+        ).exclude(
+            pk=user.pk
+        ).exists():
+
+            messages.error(
+                request,
+                "This username is already taken. Please choose another."
+            )
+
+        else:
+            # Update user details
+            user.username = username
+            user.first_name = first_name
+            user.last_name = last_name
+            user.email = email
+
+            user.save()
+
+            messages.success(
+                request,
+                "Profile updated successfully."
+            )
 
     return redirect("dashboard")
 @login_required

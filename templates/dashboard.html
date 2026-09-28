@@ -642,10 +642,8 @@ Dashboard | NaNeVora
 
     </div>
 
-    <form method="POST"
-          action="{% url 'update_profile' %}">
-
-        {% csrf_token %}
+    <form method="POST" action="{% url 'update_profile' %}">
+    {% csrf_token %}
 
         <div class="row">
 
@@ -679,20 +677,20 @@ Dashboard | NaNeVora
 
             </div>
 
-            <div class="col-md-6 mb-3">
+<div class="col-md-6 mb-3">
 
-                <label class="form-label">
+    <label class="form-label" for="username">
+        Username
+    </label>
 
-                    Username
+    <input type="text"
+           class="form-control"
+           id="username"
+           name="username"
+           value="{{ request.user.username }}"
+           required>
 
-                </label>
-
-                <input type="text"
-                       class="form-control"
-                       value="{{ request.user.username }}"
-                       readonly>
-
-            </div>
+</div>
 
             <div class="col-md-6 mb-3">
 

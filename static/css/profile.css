@@ -885,3 +885,19 @@ body.dark-mode .welcome-card p {
 body.dark-mode .info-item a {
     color: #F8FAFC;
 }
+/* Prevent profile information from overflowing */
+.info-box {
+    min-width: 0;
+}
+
+.info-box > div:last-child {
+    min-width: 0;
+    flex: 1;
+}
+
+.info-box h6,
+.info-box p {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
